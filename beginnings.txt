@@ -1,6 +1,5 @@
 Space, structures. What grounds for contention? Can't really be for resources. Structures are resources, and must be taken intact. Structures are built by machines, that are automated, and go off ahead and build out solar systems. They build more of themselves and head off again. They can accellarate hard, and travel at .5c. It takes 10 years to build out the habs. They will expand to a 50ly sphere which encompasses 120 Sol-like stars. Maybe include some binaries - they wouldn't both be 'bright'.
 If the first thing they do at each stop is replicate and refuel, they could cover the whole volume in 100 years. A typical ark would be powered by antimatter annihilation, which frees up lots of power. But it could be very small - only a few hundred Kg. If power is not an issue, it could be bigger. Lots of time, lots of energy.
-<<<<<<< HEAD
 No 'fields', no FTL, no anti-grav/artificial grav. Newtonian motion.
 Androids are functionally indistinguishable from humans - maybe believe they are human Bladerunner style. Maybe are the new human. Consciousness embodied in some new kind of substrate. Why travel, in that case? Why multiply? Need some reason beyond simple perpetuation.
 They never encounter any sentient life, but they do encounter bacteria, maybe plants. They encounter 3 terran planets which support some higher forms of life. No colonies are established - humans stick to the habs on arrival in a system.
@@ -56,5 +55,5 @@ It all comes back to compelling, believable, sympathetic motivations.
 I suppose I will need to incorporate BMIs to some extent. Or at least acknowledge them, and ban them. Maybe that's the central struggle. One group wants to embrace the neural lace, the other is agin it. Those with it get looked after by the skynet. Those without it live with somewhat more privacy, but are excluded from the overarching dialogue. Akin to those who live without Internet access, today. The right to be forgotten.
 Social stratification: 
 Birth IQ, talents, demons. How much is the result of genetic manipulation?
-No matter what, the action all has to take place in the present, not recounted by characters.
-
+No matter what, the action all has to take place in the present, not recounted by characters. If an entity is designed to accept its asciety, then surely it will never doubt its own existence.
+The economy needs to be somewhat sustainable. Maybe look to an Indian caste-type system, and transplant that into a more western millieu. 
