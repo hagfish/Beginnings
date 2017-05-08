@@ -674,4 +674,5 @@ Total smelt	466.375 (180KW ea) = 90MW
 At that rate 5m-worth of Fe patches will last 33Ks, or 9 hours 
 Going to have to RSO this map. 
 
-Expand military science, blueprint self-supporting ploppable nodes. Each needs a roboport, and a goodly supply of turrets, walls, bots.
+Expand military science, blueprint self-supporting ploppable nodes. Each needs a roboport, and a goodly supply of turrets, walls, bots. Use the turret-creep blueprint and destroyer bots to clear a good swathe, and protect it with defended hard-points. Protect bot airspace. Maybe expand power (or at least put in some more accumulators) to support turrets. Get iron and copper online, and incorporate speed modules. Then the smelters, then sort out the nodes doing the manufacturing.  
+I've built a lot of rails, so I suppose I will be using trains. Need a way to cache ore. Maybe have a centralsed southern station, connected by red belts. Maybe smelt on-site. Bus through the base needs to be at least two blue belts for Fe. Make RCUs and gold science off-site. Need sulphur for Blue circuits and batteries. Patch the green circuits through so that they are useful. They need more Fe, too. Hollow out base, and sort out bootstrap factory from science factory. Get each science type nicely modularised, and make sure each is receiving an appropriate level of precur resources. Nice'n'tidy. 
