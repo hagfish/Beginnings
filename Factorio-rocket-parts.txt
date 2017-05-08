@@ -1,0 +1,677 @@
+100 Rocket Parts
+	= 	100 Rocket Control Units
+		= 100 * 	(
+						1 blue circuit 
+							(
+								20 green circ
+									(
+										60 copper coils
+											(
+												60 copper plate 
+											)
+									+	20 iron plate
+									) 
+							+	5 red circ
+									(
+										10 green circuits
+										(
+											30 copper coils
+												(
+												30 copper plate 
+												)
+										+	10 iron plate
+										( 
+											10 plastic
+										)
+										(
+											40 coils
+												(
+													40 copper plate
+												)	
+										)
+									)
+							)
+					+	1 speed1 module (= 5 green circ + 5 red circ)
+							(
+								5 green circ
+									(
+										15 copper coils
+											(
+												15 copper plate 
+											)
+									+	5 iron plate
+									) 
+							+	5 red circ
+									(
+										10 green circuits
+										(
+											30 copper coils
+												(
+												30 copper plate 
+												)
+										+	10 iron plate
+										( 
+											10 plastic
+										)
+										(
+											40 coils
+												(
+													40 copper plate
+												)	
+										)
+									)
+							)
+		
+	+	100 Rocket Fuel
+		= 100 *		(
+						10 solid fuel (= 10 solid fuel)
+					)
+		
+	+	100 Low density parts
+		= 100 *		(
+						10 steel 
+					+	5 Cu
+					+	5 Plastic	(= 5 coal + refined fuel)
+					30 seconds
+					)
+					
+					
+
+
+
+per RP	per rocket	
+Cu	725		72500	
+Fe	390		39000	
+Pl	40		4000	
+
+St	100		10000	= another 50K Fe
+		
+		
+		
+Iron + Cu + Plastic
+
+Fe				Speed 1					
+15 coils	10 Green bus (0.5s each)	green 							RCP
+
+5 Coils bus		Blue circ (plus sulphuric)	
+Plastic bus
+	24 Red bus (8s each)
+	
+	need 5 green for each red
+	
+Electric miner = 0.5 items/second, so need 32 for copper and 50 for iron..
+	
+=====================
+
+For an output of 0.25 components / second 
+(or one rocket part / 40 seconds)
+(or one rocket / 1.1 hours)
+
+Control circuits:
+(4 green fed by 6 coils), (8 red easily fed by 4 coils), 2/2 blue circuits/speed1
+Cu bus = ~16/s
+Fe bus = ~8/s (output of 5 electric furnaces)
+Plastic = 4/s
+Sulphur = > 1/s
+
+LDS
+8 factories, fed by 20 electric steel furnaces*, fed by 25 electric plate furnaces 
+Ore = 16/s
+*Because Lev 2 assembers = 0.75 of normal speed, the overflow should feed the control circuits
+
+Together
+Cu 16/s
+Fe 24/s
+== 0.5 Parts/s
+== one RP/20s
+= 100 RP 2000s
+
+Rocket fuel
+10:1, in 30s
+For output of 0.5/s
+15 factories taking in 150 fuel/30s
+or 5/s
+16 factories, 4x4
+
+Chem factory = 0.3fuel/s, so need 15 chem factories to keep up with 5/s
+1 plastic/second, 1 copper/second
+
+50 lev 2 assemblers, 15 factories
+
+======================
+Oil
+Pumpjack = n% * 1 oil/second
+
+Refinery needs 10 oil/5s
+	or 2 oil / second
+
+My fields are all 40%, so to fill two refineries, I need 10 pumpjacks
+
+Two refineries doing advanced processing will supply:
+2/9/11 per 5s or 0.4/2/2 (ish) per second
+
+Cracking light oil will require 0.6 light/second, so will need 3 chem plants 
+and give about 1.2 petrol/second among all three
+
+So 10 pumps (at 40%) and 2 refineries gives ~3 petrol/second
+Which will run:
+Plastic: each needs 3/s
+Sulphur: each needs 3/s
+Soo one of each, at half capacity. == one of each/second
+
+Heavy can go to light, and on to solid fuel -> rocket fuel
+
+Pump * 10
+Refinery * 2
+crack heavy * 1
+Solid fuel * 1
+Rocket fuel * 1
+crack light * 3
+Plastic * 0.5 capacity = 1/s instead of 2
+sulphur * 0.5capacity = 1/s instead of 2
+
+Or, 8 chem plants.
+
+Eventually, 10 refineries will give 1 crude/second or 0.1/0.4/0.5 per second, which will give 0.25 of the above results, or 1 of each / 4 seconds or 12 of each/min
+
+=====================
+Let's say I want to build a base around feeding 10 red circuits in level 2 buildings. What will feed that?
+1 = 2 plastic, 4 coils, 2 green circuits per 8 seconds (or 2 iron, 5 copper per 8 seconds)
+10 = 3 plastic, 8 coils (6.25 copper plate tot), 2.5 iron plate (tot), 3 green circuits per second (1.5 machines on green)
+
+green circuit = 2 iron plates and 6 coils per 1 second, to make 2
+2 green circuit builders will feed 10 red circuit makers
+
+===
+For filter inserters, need 7 green circuits and 5 iron plate. Only need one per 12 seconds per machine, so one line will feed our 6 machines easily. 
+If they are being consumed at 0.5/second, that's 0.25 of one machine's capacity, and will need 2 green, and 2 iron per second
+which is 4 iron plate and 12 coils per second for the precursor green circuits.
+
+1 green circ - 1 iron and 1.5 copper per 0.5 s
+			or 2 iron and 3 copper per s per machine
+			or 6 iron and 9 copper per s per 3 machines
+
+Blue sci needs 15.5 copper and 14 iron per 12 seconds
+6 Blue sci needs 8 cu, 7 Fe per second
+
+======
+8/8 needs 16 miners (x90Kw each) and 28 electric furnaces (x180KW each) = 6.5MW
+Solar panel = 60KW so requ 108 panels, + 108 for charging = 216 panels, and ~180 accumulators
+Steam engine = 510KW, so 13 engines, and 18 boilers.
+
+For 10MW, use 20 engines, and 28 boilers (ie two setups)
+Why not just go straight to 20MW? Four boiler setups. with two coal belts.
+
+6 blue sci, 10 red circ, fewer green circ - maybe only 2, if they are well fed, 
+1 line of inserters can feed up to 24 blue sci machines, so 1 line will do fine.
+
+feeding 40 electric furnaces requ 23 ore/sec, or 46 electric miners
+Let's say 50/40, so thats 12MW plus steel
+25 each on iron and copper (5x5)
+20 each on iron and copper (10x2) 
+
+===========
+1 rocket part
+= 10xLDS = 100 steel (from 500 iron plate) + 50 copper + 50 plastic
+= 10xControl system = 400 iron + 720 copper + 5 sulphur + 140 plastic
+= 10xFuel = 100 solid fuel
+
+= 900 iron + 770 copper + 5 sulphur + 190 plastic (from 95 coal and 285 petrol)
+100 rocket parts = 90,000 iron, 77,000 copper, (80 miners, 100 furnaces, couple of hours) 500 sulphur 19,000 plastic (3 factories, 2 hours)
+
+============
+One rocket per hour:
+
+= One satellite per hour
+		=	50 acid, 500 solid fuel, 4200 iron, 7300 copper, 1500 steel, 
+			900 plastic, 500 batteries
+
+= control unit = 
+	(0.5 acid + 39 iron + 72.5 cu + 12 plastic + 30s) 
+	* 100 = 50 acid, 3900 iron, 7250 cu, 1200 plastic / hour
+	
+= fuel (10 * solid fuel + 30s) * 10
+
+= LDS (10 steel + 5 cu + 5 plastic + 30s)
+		= 1000 steel + 500 cu + 500 plastic
+		
+1 of each component / second = 1000s/rocket = 16 mins
+With productivity boots, that's down to below 10 mins, probably
+		
+* 10 for Rocket Parts:
+1000 acid
+39,000 iron
+116,500 cu
+17,000 plastic
+10,000 steel
+
+Totals incl satellite
+11,500 steel
+123,800 copper
+43,200 iron
+17,900 plastic (and 9000 coal)
+500 batteries
+
+Per second:
+Steel: 		3.19 (from 16 iron)
+Copper: 	35
+Iron: 		12 (total of 28) (going to need fast belts)
+Plastic: 	5 from three full-supplied factories, needing 9 petrol/second
+			needing 8 advanced refineries. Maybe just make it 1:1, and have a 
+			sulphur factory, too. Crude to light to petrol to sulphur. Light oil
+			to solid fuel.
+			Nine refineries (4MW) will need 90 crude per 10 seconds
+				or 9 crude per second
+				or 9 100% pumps, or 90 10% pumps (8MW). Fewer with speed modules.
+
+Requires 2(35+28) = 90 miners, 50 smelters (requiring 17MW)
+
+Power supply for 35MW
+30 engines, and 42 boilers or
+600 solar panels, 500 accumulators (100 of those 9x9 blueprints)
+
+================
+Soo, let's say I have 30 10% oil patches
+Without speed that's 3 crude/second, or maybe up to 10/s with speed and beacons
+
+Soo, 10 crude/s using ALL of the petrol and light for petrol = 8.5 petrol/s
+
+This will make (almost) 6 plastic/second
+Which will support 24 advanced circuit mills...
+
+So 10 crude/s should support 20 red circuits factories
+
+Which will also require:
+6 green circuits/second (3 factories consuming (6 iron + 9 coils/s) from 3 dedicated coils factories, needing 4.5 cu/s)
+and 10 coils/s (from 5 factories, consuming 6 cu/s)
+
+Totals raw is ~10 Cu/s, 6 Fe/s, 6 plastic, 3 coal, 10 crude
+	or 5/3/3/2/5 for 10 red circuit factories
+
+Or in general, you can support twice the number of red circuit factories as you have crude/s
+
+=========
+One forward base requ:
+Pumpjacks
+Level 3 factory
+Train station
+beacon
+robo port (with repair packs and construction bots)
+provider chest (laser turrets)
+laser turrets
+walls
+Lots of speed 3 modules
+Concrete
+
+================
+For a rocket-building base built around 16 red circuits factories
+making 2 red circ/second (requires 4 green circuits/second (output of 2 factories))
+
+Speed1 (5/5/15s) + BlueCird (20/2/15s)
+
+One pair of Speed1/BlueCirc requires 7 red/15s (or 0.5/s)
+So 16 recCirc will feed 4 pairs.
+These four pairs will create 1 pair of chips every 4s
+RCUs require 1/1/30s
+So 1 pair per 4s will feed (almost) 8 RCU fabs
+
+8 coils (16Cu/s, from 32 miners, and 20 furnaces)
+6 greenCirc (12Fe/s, from 24 miners and 15 furnaces)
+16 red 
+4 blueCirc
+4 speed1
+8 RCU = 0.25 RCU/s = 1.1 hours
+
+==============
+Solar power
+1 panel = 15Fe, 28Cu, 5Steel (15 green circuits, 5Cu, 5 Steel)
+1 accumulator = 2Fe, 5 batteries (battery = 1Fe, 1Cu, 2 acid (1 acid = 1 sulphur + 0.2Fe))
+6 panels + 5 accumulators = 360W
+18 panels + 15 accumulators ~= 1MW
+180 panels + 150 accumulators = 10MW = 30 blueprints
+
+= 750 batteries = 1500 acid = 1500 sulphur, 300 Fe
+100MW = 7500 batteries = 15K sulphur = 22,500 Petrol
+7500 batteries = 10 hours at speed 0.
+10 factories will need 4 acid/second (output of one factory) supplied by 4 sulphur/second (output of 2 factories) supplied by 6 petrol/second (output of ~5 refineries...)
+May need to shut down plastic for a while. Crack more heavy/medium.
+And that's just for 100MW/hour.
+
+Will need lots of stone for walls and lots of turrets (12 batteries per turret).
+
+1GW = 3K blueprints = 75K batteries = 225K Petrol
+= 50x50 blueprints = 500x500 tiles. Will need lots of turret creep to clear/hold such an area. Maybe lay down the outside square first. 25x25 x six (625 patches = 4K panels/3K acc
+
+Or eight 20x20 outpost installs
+
+=============
+
+modules (production and speed) and solar. Two automation lines for speed, prodn,
+	Space, walls, defence, landfill
+After that: beacons
+Then: More resource nodes
+Then: finish science X
+cog > basic > fast > smart
+
+8 red, 5 batteries, 1 filter inserter, 17 steel
+12 blue sci (1/s)
+3600/hour, 16K required = 4.4 hours production.
+Will require/feed 30 labs for consumption in 4.4 hours.
+1/s red sci requires 5 fabs (1 cogs/second (0.5 fab))
+1/s green sci requires 6 fabs (1 basic inserters(1 cogs, 1 green circ(1 coils))(, 1 conveyors(1 cogs, iron))
+
+Maybe put green circuits on a bus right by the furnaces. 3Cu + 2Fe/s = 2 circuits
+Times 10 = 30Cu + 20Fe/s, which is some..
+Needs 100 miners and 88 furnaces to feed :/
+Outpost = (a reasonable-sounding) 20 miners = 10 ore/second = one carriage-full of finished plates every 7-ish mins, if smelted on-site. Two carriages every 15-ish minutes.
+Just have the train visit them one after another
+
+If the green circuits were assembled off-site in 5 factories, I would need enough to make 12.5/second = 12.5Fe and 19Cu/s. Quite a bit.
+4 Factories would make 10/s, and fill a carriage in 13 minutes (I think they stack to 200)
+Less stuff to truck around. If I have 3Fe/2Cu, then 1Fe/1Cu can go to green, probably. Maybe assemble them at Western Oil. Only need space for 10 factories. Any imbalance in finished ores can go to steel, and go on the train. 
+
+Downside is that I would need to shift the factory as the outpost depletes. Upside is less stuff to transport. 
+
+Five outposts (3 iron, 2 copper), each with 20 miners and 18 smelters, and storage for 8K finished plates. Visit once every 10 mins should be plenty. Much easier to store plates than ore. Much much easier to store circuits than plates.
+
+To fill a cargo wagon with green circuits == 8K circuits. One factory for 1.1 hours or 5 factories for 15 minutes. Feeding 5 factories requ 25 ore/s = 50 miners and 44 furnaces.
+50 miners, to begin with, tho. Furnaces right there at the ore deposit (30Cu, 15Fe). Red belts.
+
+Have this set up as a blueprint, to speed up development of new ore veins.
+Maybe just have the miners as a 5x5 grid, and remove those that aren't necessary.
+25 miners is only 12.5 ore/s. 
+Blueprint for [miner]belt[miner]
+Blueprint for ore loading into two cargo wagons (incl splitters)
+(8 steel chests, 8 blue inserters, 8 green inserters, power poles, track, 7 splitters)
+Blueprint for ore loading into one cargo wagon
+(4 steel chests, 4 blue inserters, 4 green inserters, power poles, 3 splitters)
+One each side of each cargo wagon.
+
+
+Green circuits required = 2/s for red circuits, 7/s for blue sci,
+8/s requ 4 fully stocked circuits fabs, and 4 fully stocked coils fabs.
+ 
+Purple. 10 every 12 seconds means I need some boosts, or a second factory. 
+Take over: resource nodes, large area of space. Original zone could be devoted to refining. - Plastic, sulphur, rocket fuel, barrels of lubricant --> a train.
+
+Then: Moar rockets. If I can have 1.4x productivity throughout the chain, I may need only around 30% of the raws. (Ore * 1, Metal * 1.4, circuit * 1.4, component * 1, rocket * 1.4)
+Budget on 1MW/factory or furnace.
+Currently at 2.3K panels == 140MW (/2 = 70MW)
+
+===============
+
+To get one rocket part/second:
+
+LOW DENSITY STRUCTURES
+10 steel, 5Cu, 5Plastic, 30 seconds. With production boots, need only half this much of raw: 25Fe, 2.5, 2.5
+
+Feeding 30 factories requ 300 steel, 150Cu, 150 plastic/30s
+or 10/5/5/s
+
+
+10 steel/s = 50Fe/s = 180 smelters and 200 miners.. 
+
+Mine*1, Smelt*1.2, Steel*1.2, LDS * 1.4, Rocket * 1.4 = 2.8* for production, which means I only need 1/2.8=36% of the raws, or 72 miners., but 250 smelters because of the lag.
+
+250 smelters at 500KWea = 125MW (or another 4K panels, 5K accumulators)
+Space requ for this install == 150x150
+Accumulator = 5 batteries, 10s - need 25K batteries
+Panel = 5Steel, 15 greencirc = 25K Steel (125KFe) and 60K green circ
+Maybe repurpose eastern to make green circ, and ship them in. Clear space for smelters.
+
+=========
+Productivity modules
+level 1: 5g/5r/15s (8 factories = 40g+40r/60s == 8/min)
+level 2: 4 lev1 / 5r/5b 30s (2 factories = 8lev1+10r+10b/60s = 4/min)
+level 3: 5 lev2 / 5r/5b 60s (1 factory = 1/min)
+
+Total/min = 55g/55r/15b(== 300g/30r)
+Total = 355g/85r (requ 170g)
+Total g = 525/min or output of 5 factories.
+Total r = 85/min, or output of 12 factories. I have 16..
+So 12red/8green supports 1 level3/min.
+or 6 red/4 green = 1 every 2 mins
+Just keep em ticking over. Maybe set up a zone for them, because feeding 300 furnaces will require a few productivity modules... (also 5K panels, 6K accumulators)
+
+===
+Need to acquire more resource nodes, and set up staging stations - one one each side.
+
+300 furnaces will take up 300*9*2 tiles or 100x100-ish. 8x40, requ 175 ore/s. Saturate a blue belt = 20 green circ. Express belts required in volume. One belt can supply 70 furnaces (up to 90 with 2*productivity:3)
+80 miners with 20/node = 4 nodes. One train wagon can deliver 2000 or enough to feed this for 50 seconds.
+Plate buffer of  17 chests can store 68K plates
+	0	-	0	-	0
+	|				|
+	0	-	0	-	0	-	0
+	|				|		|
+==>	0	-	0	-	0		=====>	
+	|				|		|
+	0	-	0	-	0	-	0	
+	|				|
+	0	-	0	-	0	
+
+Mass produce miners, belts, walls, turrets. Maybe combine train staging.
+
+1 item/s
+
+
+==========
+
+Todo
+
+Develop the oil node to the north east. 30 pumps, 60 speed modules, tanks, pipes, assembler building, rail head. Turrets, roboport, spare parts, walls.
+Alt: refineries, storage, rail head. Onsite processing requires water. Make plastic and rocket fuel.
+
+Explore another perimeter
+
+Develop more ore nodes
+
+Re-route western train to use eastern unloader. Deliver oil by pipeline. Or just belt it down. Typical node = 25 miners which mine 12 ore/second, so yellow belts are fine. Two nodes can merge onto red, and three/four onto blue. Blue perimeter bus, with a spur going to the smelters from the east. Need base dimensions. Based on 1000 to the side, need 4.5K blue belts. 
+1Cogs/1Fe plate		1Yellow/5Cogs/1Fe plate		1red/5Cogs/1Fe plate/2oil
+2yellow->			1Red						1Blue
+1 factory			2 factories					2 factories
+2 cog/s				20 cogs/s					20 cogs/s				
+2 fe/s				4 fe/s						4 fe/s + 4 oil/s
+
+All up: 42 cogs/s from 44Fe/s
+Output of 21 factories
+
+===
+Lay out more power
+If evolution is 1 (it seems to be) might as well use steam engines, fuelled by rocket fuel. Boiler requ 780KW. For 1GW out, need 2800 boilers, = 2.2GW in = 9 rocket fuel/s
+
+9 rocket fuel/s 
+= 90 solid fuel/s 
+= 90 light/s 
+= 171 crude/s 
+	or 1710 0.1 pumps 
+	or 570 0.3 pumps
+	or (max) 342 0.5 pumps
+
+
+
+===
+Basic	= 10Crude 	-> 3 light 		+ 3 heavy -> cracked -> 2.25 light	= 5.25 light
+Advanced= 10 crude 	-> 4.5 light 	+ 1 heavy -> cracked -> .75 light 	= 5.25 light
+Might as well use Advanced, and get the extra petrol.
+
+========
+Next: Modularise factory.
+Setup:
+
+Refining
+IN: crude oil, coal
+INTERMEDIARY: solid fuel
+OUT: plastic, rocket fuel (extra to support satellite)
+
+Smelting (central)
+IN: Ore
+OUT: Iron plate, copper plate, steel
+
+Then areas for:
+Base expansion support
+IN: plates, steel, plastic, sulphur
+INTERMEDIARY: batteries, speed1 modules, red circuits, acid, engines
+OUT: panels + accumulators, medium poles, walls, laser turrets, bots, radars (also to support satellites), concrete, assemblers (a box of 100), repair packs, red belts, blue inserters
+
+4 belts through the centre with Cu/Fe, steel/plastic, green/cogs, batteries/Fe?? 
+
+If  cogs are created onsite each time:
+Fe/Cu, Pl/St batteries/Green
+
+Solar panel: Cu, St, Green (left)
+Accumulator: Fe, batteries (right)
+lasers: batteries, Green, Steel (??)
+lev 1 assembler: Green, cogs, fe
+Lev 2 assembler: Green, cogs, fe, lev1
+Lev 3 assembler: 4Speed1(5red/5green) + 2lev1
+Repair packs: green + cogs
+Electric miner: Fe + cogs + green
+Yellow belt: Fe + cogs
+Red belt: cogs + yellow belt
+Blue belt: Red belt + cogs + lubricant
+
+Yellow underground belt: 5 yellow belts + 10 Fe
+Red underground belt: underground belts plus Fe??
+
+Medium poles: steel, copper plate
+Big poles: steel, cu
+
+Engines: 
+Brown: steel, cogs, pipes
+Red: Green + lubricant + brown engine
+
+Bot frame: red engine + batteries + steel + green
+Bot: frame plus either green or red
+
+Capsules
+Defender: 3 cogs + 2 green + 1 piercing ammo (5Cu + 1St)
+Distractor: 3 red + 4 defender
+Destroyer: 1Speed1(5G/5R) + 4 distractor
+
+Poison: coal, green, steel
+
+Circuits
+IN: Cu plate, Fe plate, sulphur, plastic water
+INTERMEDIARY: green circuits, red circuits, blue circuits (also support satellite), speed1 modules
+OUT: Rocket control units
+
+====LDS 
+IN: plastic, steel, copper
+OUT: LDS (extra to support satellite)
+For 1LDS/s need 10 steel/s = 50 Fe/s = 50 ore/s = 100 miners and two full red belts of ore. Requiring 175 Fe mills and 175 Steel mills... 350 mills. 
+Steel mills need the effects of a Speed2 beacon to counter the extra productivity of the Productivity3 in the Fe mills.
+Five Cu/s just needs 9 mills.
+21 factories (with speed beacons)
+
+Modules included (and mitigating productivity speed loss with beacons):
+1 Fe ore =  1.2 Fe plate = 1.44 Steel = 2 LDS
+So maybe I can halve the number of miners:
+50 miners = 25 ore/s out; 25Ores in = 30Fe/s out; 30Fe/s in  7.1St/s out(Speed2); 7.1St/s in = 1LDS/s out
+
+====For Rocket fuel
+Refining (use Refining 2. Trust me. The 0.75x from Heavy to Light kills the bonus)
+10 crude ~= 10SF
+7.2 crude/s -> 1RF/s
+or about 25 pumps @ 0.3/s
+
+1 Refinery can handle 2 crude/s so need 4 refineries.
+
+====Rocket Control Units
+1/s = (.71 Blue + .71 Speed1)/s = Half regular inputs = (12.5G+2.5R)/s
+= (9Fe+12Coil)/s + 2.5R/s
+
+
+1 Rocket part/s = 0.0071 rockets/s =  140s/rocket or 2.5mins.
+
+
+=====
+
+Gold science (x2)
+
+1x Speed1		5Red + 7Green		(10/25/5) + (7/11)	17Fe/27Cu/5Pl
+1x BlueCirc		2Red + 20Green	 	(4/10/2) + (20/30)	24Fe/40Cu/2Pl/HS04
+														41Fe, 67Cu, 7Pl/s
+														
+so 1 gold science/second = 8 factories, 20Fe, 34Cu, 4Pl /s
+= 40Fe miners, 65Cu miners, and all the smelters.
+= 28 red, 7 green 
+
+Then there's rocket science, that needs all this again.
+
+Enrichment
+Mined uranium 10:1 U238 (plus 7/10,000U235)
+3U238 -> 1 U235
+
+19 U238 (+1 U235) = 10 fuel cells
+
+1.9 U238 (or 19 ore) = 1 fuel cell = 200s of power
+or 100s with two reactors
+10 hours play with two reactors = 360 fuel cells, = 36*1.9 U238 = 69 U238...
+A typical ore field of 150K uranium = 15K U238. So we're fine for power.
+
+Filter Stack inserters remove/reload the U238
+Filter Stack inserter removes U235
+	Stack inserter removes >1 U235 (not sure if stack size over-ride is important)
+	Basic inserter removes =1 U235 (not sure if stack size over-ride is important)
+	
+With speed modules, that's about 2 U235/minute. 20 minutes until you can start a second spinner. 10 minutes for a third, 7 mins for a fourth, then 8 U235/min thereafter. You can't eat it, and after a while it's just a waste of U238. I should probably shut them down. Keep 160 U235 on hand, and make the rest into fuel cells. 360 U235 + 7.2K U238 = 3.3K fuel cells.
+
+Next job: go back to the old save and make blue prints of smelters, red circuits.
+Back to new save and clean up smelting and circuits. 
+
+Circuits
+Bring more ore patches online: 1:2 Fe/Cu.
+Then set up a circuit area that can spit out 50:50 Blue/Speed1, 1 of each per second.
+
+Speed1	5G:5R	15Fe, 35Cu, 10Pl 
+Blue	20G:2R	24Fe, 40Cu, 4Pl, HSO4
+		25G:7R	39Fe, 75Cu, 14Pl per second.
+
+Need a way to split red circuits 2:5 to support Blue:Speed1 = 2/7:5/7
+or .28:.71, so .25:.75 is near enuf
+
+7 red/s = 6 red factories, which is not that many.
+25G/s for the Blue/Speed1 + 14/s for the red circuits = 20 factories, which is a lot.
+
+One of each/second = 2 gold/second, which is pretty good, and should support RCUs, as well.
+Gold Science = 
+RCU = 30s, so many factories are required.
+
+Big ore patches and an oil reserve to the south. Research WMD, clear, develop those patches. 
+
+RED		5s	1cog (0.5s) + 	1cu	= 2Fe, 1Cu
+GREEN	6s	1Basic (0.5s) + 1 belt (0.5s)	=	1.5Cu, 5.5Fe
+Blue	12s	1Miner (2s) + 1Red (8s) + 1Engine	(20s, 1St, 1Cog, 2Pipe)		=	25Fe, 9.5Cu, 2Pl
+Grey	5s	0.5Piercing (3s) + 0.5Gren (8s) + 0.5Turret(10s) = 23Fe, 8Cu, 0.5St, 5Coal
+Purple	7s	0.5Assembler (0.5s) + 0.5Elec (20s) + 0.5Smelt (5s) = 16Fe, 15Cu, 5St, 5Pl, 0.5Elec
+Gold	7s	0.5Batt(5s) + 0.5Blue (15s) + 0.5Speed1(15s) = 8Fe, 24Cu, 3.5Pl, 0.5Batt
+
+
+Fe (as plate) 88.5 	= two blue belts
+Cu	63				= 1.5 blue belts
+Steel	12
+Pl	15.5
+Coal	5
+Fe (total)	148.5
+HS04	2
+Heavy	2 
+
+300 ore smelters
+40 will handle one red belt of ore (20 per side) - 7 of these (2Cu, 3Fe, 2St) Could use braided belts, but meh.
+1 Blue belt of Cu
+1.5 Blue belt Fe for starters
+
+Number per s	0.5
+Fe miner	137.5
+Cu miner	59
+Fe smelt	240.625
+Cu smelt	60.75
+St smelt	165
+
+Total mine	196.5 (90KW ea) = 18MW
+Total smelt	466.375 (180KW ea) = 90MW
+
+At that rate 5m-worth of Fe patches will last 33Ks, or 9 hours 
+Going to have to RSO this map. 
+
+Expand military science, blueprint self-supporting ploppable nodes. Each needs a roboport, and a goodly supply of turrets, walls, bots.
