@@ -643,18 +643,19 @@ RED		5s	1cog (0.5s) + 	1cu	= 2Fe, 1Cu
 GREEN	6s	1Basic (0.5s) + 1 belt (0.5s)	=	1.5Cu, 5.5Fe
 Blue	12s	1Miner (2s) + 1Red (8s) + 1Engine	(20s, 1St, 1Cog, 2Pipe)		=	25Fe, 9.5Cu, 2Pl
 Grey	5s	0.5Piercing (3s) + 0.5Gren (8s) + 0.5Turret(10s) = 23Fe, 8Cu, 0.5St, 5Coal
-Purple	7s	0.5Assembler (0.5s) + 0.5Elec (20s) + 0.5Smelt (5s) = 16Fe, 15Cu, 5St, 5Pl, 0.5Elec
+Purple	7s	0.5Assembler (0.5s) + 0.5Elec (20s) + 0.5Smelt (5s) = 16Fe, 15Cu, 5St, 5Pl, 0.5Elec, 5Brick (=10stone)
 Gold	7s	0.5Batt(5s) + 0.5Blue (15s) + 0.5Speed1(15s) = 8Fe, 24Cu, 3.5Pl, 0.5Batt
 
 
 Fe (as plate) 88.5 	= two blue belts
 Cu	63				= 1.5 blue belts
-Steel	12
-Pl	15.5
-Coal	5
+Steel	12 (engines, furnaces, piercing ammo)
+Pl	15.5 (red circuits)
+Bricks (or stone, but bricks take less space) furnaces
+Coal	5 grenades
 Fe (total)	148.5
-HS04	2
-Heavy	2 
+HS04	2 (batteries, blue circuits)
+Lubricant	2 electric engines
 
 300 ore smelters
 40 will handle one red belt of ore (20 per side) - 7 of these (2Cu, 3Fe, 2St) Could use braided belts, but meh.
@@ -674,5 +675,131 @@ Total smelt	466.375 (180KW ea) = 90MW
 At that rate 5m-worth of Fe patches will last 33Ks, or 9 hours 
 Going to have to RSO this map. 
 
-Expand military science, blueprint self-supporting ploppable nodes. Each needs a roboport, and a goodly supply of turrets, walls, bots. Use the turret-creep blueprint and destroyer bots to clear a good swathe, and protect it with defended hard-points. Protect bot airspace. Maybe expand power (or at least put in some more accumulators) to support turrets. Get iron and copper online, and incorporate speed modules. Then the smelters, then sort out the nodes doing the manufacturing.  
-I've built a lot of rails, so I suppose I will be using trains. Need a way to cache ore. Maybe have a centralsed southern station, connected by red belts. Maybe smelt on-site. Bus through the base needs to be at least two blue belts for Fe. Make RCUs and gold science off-site. Need sulphur for Blue circuits and batteries. Patch the green circuits through so that they are useful. They need more Fe, too. Hollow out base, and sort out bootstrap factory from science factory. Get each science type nicely modularised, and make sure each is receiving an appropriate level of precur resources. Nice'n'tidy. 
+0.5 LDS: 0.5/s = 7 steel/s = 35Fe/s = 65Fe -> 65St smelters and 75 miners on ~3 ore patches.
+
+0.5 RCU: 0.5/s = 15 factories fed by 28 red factories and 20Green factories
+40Fe/s + 65Cu/s + HSO4 + plastic
+
+Fuel = 5 solid/s into 15 factories. Bring southern field online to make rocket fuel. 10 pumps = 100/s. Crack heavy to light, and process the lot. 
+10 crude in takes 5s
+8 solid fuel per 3s. 
+
+So how about we go with 0.5/s, with some speed/productivity modules in/around the silo?
+Once the first rocket is launched, ffs sort out science a bit. Modularise, and make sure they are each getting the resources for ~1/s, and no one is getting starved or causing back-ups. For eg purple and gold probably need more than four assemblers each.
+
+Need a circuits factory, but should the one factory support Gold science, and RCUs and module production? Probably. Just split em up. Also split gold/Red appropriately before they get to the speed1 and blue circs. 
+
+Rip out steam.
+Better defences - prepare for behemoths. 
+
+Fill in lake, make some hazard concrete and get stuff set up RIGHT. Proper main bus. Only four lines required (plus acid and lb).
+
+Automate building satellites (limited to 1): 5 radar, 100 accum (batteries), 100 LDS, 100 solar, 50 fuel, 100 blue circuits, solar panels, steel, circuits, 
+
+Lay on more Cu and more Fe. Maybe train them in. 
+
+Destroyer capsules. 
+More Level 3 assemblers (need 300 - pinch some Speed1s)
+
+Empty inventory. Tear it all down. Begin anew (except for the tank farms). Srsly. Start over. Shift chests and tanks first. More bots of both kinds.
+
+6	Green
+20	Red
+4	Blue
+4	PI
+2	PII
+1	PIII I have a decent stock of circuits. Should devote a few assemblers to PIIIs over at the western circuit fab.
+
+Maybe another circuits factory down by the uranium processing outpost. Bring that 8m Cu patch online. Need a tank. Destroyers. Make some space. Set up smelter farm. Set up power somewhere safe. Go from there. Two new reactors.
+
+7 Pur > 5 Grey > 7 Gold > 12 Blue > 6 Green > 5 Red
+
+4 Pur > 3 Grey > 4 Gold > 6 Blue > 3 Green > 3 Red
+Make the whole thing a blueprint? 70x50 = 3.5K tiles
+
+Science
+Bus: 
+4 belts
+HSO4 (Gold only) - could belt in e-engines and sulphur. (still need water)
+Lb	 (Pur only) - could belt in e-engines and sulphur (still need water).
+Brick/coal (covers pur/grey) 
+Plastic/Steel (Pur, grey, gold, blue)
+Fe -> 70 tiles long, so maybe give it an extra 20 tiles.
+Cu -> 70 tiles long 
+~300 belt units for four belts
+
+Bus 2: Red/Green shared
+6 express belts, only Cu/one Fe need to be full length
+Brick (8 miners, 5 smelters)/Coal (14 miners)
+HSO4 
+Red (22 fabs)/Steel (30 smelters)
+Lb
+Green (12 fabs)
+Cu 120 miners, 120 smelters. If I belt in Green/Red circuits, don't need 2 belts 
+Fe 160 miners, 160 smelters
+Fe
+
+Solve each in turn. Go with half portions, to begin with. If I need 40K red science at 0.5/s == 22 hours, which is fine. Can always slam early science faster. Even at 1/s it's still only ~10 hours.
+
+Red:5.5s,  Fe-> 1/2 belt of cogs, plus 1/2 belt of Cu. 3 factories. Easy. Try to avoid filter inserters. They suck when things get backed up. Avoid chests.
+8 deep (1 layer of assemblers)
+
+Green:8.8s, Single Cu-> Coils -> Green <-Fe, Single cogs -> belt. Single Basic, Single Yellow belt, 4 green science factories 
+Cu -> Coil -> Green -> Basic <- cogs -> Belt <- iron
+8 deep (1 layer of assemblers)
+
+Blue: 1x miners, 3x red, 10x engines (half go to purple science)
+	Coils, Fe, Pl, Green. Smelt steel to order for engines. 2 smelters per 3 engine assemblers. Make coils and green and belt in. Yep - 20 smelters. 
+6 blue assemblers
+Give it 20 tiles
+	
+Gold: HSO4, 3:1 Blue(6)/Speed1(3), batteries
+0.25 of number of factories (3 LevIII)
+Just make em. Circuits belted in.
+20 tiles
+
+Grey
+10s, 10 Coal,  49Fe, 15Cu, 1 Steel = 2 packs 
+5 coal, 25Fe, 8Cu, 0.5steel = 1 pack
+2 grey science factories
+1 factory, Piercing rounds: 5Cu, 1Regular rounds (4Fe), 1 steel, 3s; 2 factories, each fed by a regular rounds factory np. Need 0.75 steel/s = 13 smelters..~4Fe/s. Too bulky. Just belt it in.
+2 factories, Grenade: 10coal, 5Fe, 8s; 4 factories, np
+2 factories, Gun turret, goes last, as no need for coal/steel belt: 10Cu, 10Cogs, 20Fe, 8s; 4 factories, each fed by a cog maker.
+10 tiles
+
+Purple:
+0.25 of number of factories (3 Lev III)
+1 Furnaces (steel, brick, red), 5Red, 10Steel, 10 brick, 5s
+1 L1 assemblers, 3Gre, 5Cog, 9Fe, 0.5s
+2 E-engines (engines..), 1engine, 2Green, 15Lb, 10s. Take leftover engines from blue
+20 tiles deep
+
+Rockets: 0.5/s
+Fe 51/s == 90 smelt and 100 miners
+Cu = 43/s == 75 smelt and 80 miners
+
+LDS, 12 fabs, 1x plastic, 45 steel smelters
+FUEL, 12 fabs, 12 chem factories
+RCU, 12 fabs, 4xblue (5xgreen + 5xRed), 6xSpeed1 (3xGreen, 12xRed), 
+
+Satellite
+Can mostly scrounge from above, fabs for panels, accum, radar
+
+Total
+Fe 131/s = 230 smelt and 250 miners
+Cu 103/s = 180 smelt and 200 miners
+Coal 12/s = 23 miners
+Petrol 320/s = 36 pumpjacks for 350 crude/s. Refineries take 20/s = 17 refineries..
+Stone = 8 miners
+
+450 miners = 4050 tiles of ore resources.
+Typical patch is ~25 miners == 20 decent patches.
+
+Scrounge some circuits for modules.
+Properly automate express transport belts production and ancilliary stuff
+Clear some space. Decide E/W or N/S orientation for bus. Leaning toward vertical bus.
+
+Train bus
+Fe, Cu, Coal/Brick/Green/red/steel
+Plates, unload both sides, stack inserters
+Green unload one entire side. The others get 1 or two stack inserters each.
