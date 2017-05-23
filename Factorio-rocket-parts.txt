@@ -847,9 +847,12 @@ Blueprint for train stations.
 ====
 
 Smelter array
-Markings for 16 lanes of ore up the middle; 8 Cu, 8 Fe, balanced with splitters. Smelters 20 deep on each side. A third of Fe goes on to Steel. That would be 80 furnaces, or two rows worth. Maybe just belt it in, rather than getting fancy with direct supply. If steel backs up, Fe can just carry on its merry way. Make a blueprint of one 40-smelter setup and tile it. Same one can be used for steel. Basic inserters and red belts. Nothing fancy. Well defended. 
+Markings for 16 lanes of ore up the middle; 8 Cu, 8 Fe, balanced with splitters. Six arrays of 40 with 20s melters on each side. Two further arrays of Steel. Maybe just belt it in, rather than getting fancy with direct supply. If steel backs up, Fe can just carry on its merry way. Make a blueprint of one 40-smelter setup and tile it. Same one can be used for steel. Basic inserters and red belts. Nothing fancy. Well defended. 
 
-Collect ore from drop-off marshalling stations. 
+A blue belt will transport 2.4K/minute. A single train carriage will do the same. 4x40Fe + 6x40Cu = ~230 plates/second = 13K plates/minute.
+
+Can probably only support 100 plates/second all in, to begin with. Leave room to grow. Just split the Fe into thirds, and send a third to steel. Shift its array if it gets in the way. 80 steel smelters ~=10 steel/s, which is needed for my 0.5 science/second factory.. 
+Collect ore from drop-off marshalling stations. Or just have multiple trains. Dump and run. Pick up and run. Maybe have a dropoff station for each resource, so backing up one won't back up the others. Cu, Fe, Steel, Plastic. Coal and bricks can just be belted in.
 
 ===
 
