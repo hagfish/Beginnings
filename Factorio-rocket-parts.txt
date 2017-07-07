@@ -1,223 +1,3 @@
-100 Rocket Parts
-	= 	100 Rocket Control Units
-		= 100 * 	(
-						1 blue circuit 
-							(
-								20 green circ
-									(
-										60 copper coils
-											(
-												60 copper plate 
-											)
-									+	20 iron plate
-									) 
-							+	5 red circ
-									(
-										10 green circuits
-										(
-											30 copper coils
-												(
-												30 copper plate 
-												)
-										+	10 iron plate
-										( 
-											10 plastic
-										)
-										(
-											40 coils
-												(
-													40 copper plate
-												)	
-										)
-									)
-							)
-					+	1 speed1 module (= 5 green circ + 5 red circ)
-							(
-								5 green circ
-									(
-										15 copper coils
-											(
-												15 copper plate 
-											)
-									+	5 iron plate
-									) 
-							+	5 red circ
-									(
-										10 green circuits
-										(
-											30 copper coils
-												(
-												30 copper plate 
-												)
-										+	10 iron plate
-										( 
-											10 plastic
-										)
-										(
-											40 coils
-												(
-													40 copper plate
-												)	
-										)
-									)
-							)
-		
-	+	100 Rocket Fuel
-		= 100 *		(
-						10 solid fuel (= 10 solid fuel)
-					)
-		
-	+	100 Low density parts
-		= 100 *		(
-						10 steel 
-					+	5 Cu
-					+	5 Plastic	(= 5 coal + refined fuel)
-					30 seconds
-					)
-					
-					
-
-
-
-per RP	per rocket	
-Cu	725		72500	
-Fe	390		39000	
-Pl	40		4000	
-
-St	100		10000	= another 50K Fe
-		
-		
-		
-Iron + Cu + Plastic
-
-Fe				Speed 1					
-15 coils	10 Green bus (0.5s each)	green 							RCP
-
-5 Coils bus		Blue circ (plus sulphuric)	
-Plastic bus
-	24 Red bus (8s each)
-	
-	need 5 green for each red
-	
-Electric miner = 0.5 items/second, so need 32 for copper and 50 for iron..
-	
-=====================
-
-For an output of 0.25 components / second 
-(or one rocket part / 40 seconds)
-(or one rocket / 1.1 hours)
-
-Control circuits:
-(4 green fed by 6 coils), (8 red easily fed by 4 coils), 2/2 blue circuits/speed1
-Cu bus = ~16/s
-Fe bus = ~8/s (output of 5 electric furnaces)
-Plastic = 4/s
-Sulphur = > 1/s
-
-LDS
-8 factories, fed by 20 electric steel furnaces*, fed by 25 electric plate furnaces 
-Ore = 16/s
-*Because Lev 2 assembers = 0.75 of normal speed, the overflow should feed the control circuits
-
-Together
-Cu 16/s
-Fe 24/s
-== 0.5 Parts/s
-== one RP/20s
-= 100 RP 2000s
-
-Rocket fuel
-10:1, in 30s
-For output of 0.5/s
-15 factories taking in 150 fuel/30s
-or 5/s
-16 factories, 4x4
-
-Chem factory = 0.3fuel/s, so need 15 chem factories to keep up with 5/s
-1 plastic/second, 1 copper/second
-
-50 lev 2 assemblers, 15 factories
-
-======================
-Oil
-Pumpjack = n% * 1 oil/second
-
-Refinery needs 10 oil/5s
-	or 2 oil / second
-
-My fields are all 40%, so to fill two refineries, I need 10 pumpjacks
-
-Two refineries doing advanced processing will supply:
-2/9/11 per 5s or 0.4/2/2 (ish) per second
-
-Cracking light oil will require 0.6 light/second, so will need 3 chem plants 
-and give about 1.2 petrol/second among all three
-
-So 10 pumps (at 40%) and 2 refineries gives ~3 petrol/second
-Which will run:
-Plastic: each needs 3/s
-Sulphur: each needs 3/s
-Soo one of each, at half capacity. == one of each/second
-
-Heavy can go to light, and on to solid fuel -> rocket fuel
-
-Pump * 10
-Refinery * 2
-crack heavy * 1
-Solid fuel * 1
-Rocket fuel * 1
-crack light * 3
-Plastic * 0.5 capacity = 1/s instead of 2
-sulphur * 0.5capacity = 1/s instead of 2
-
-Or, 8 chem plants.
-
-Eventually, 10 refineries will give 1 crude/second or 0.1/0.4/0.5 per second, which will give 0.25 of the above results, or 1 of each / 4 seconds or 12 of each/min
-
-=====================
-Let's say I want to build a base around feeding 10 red circuits in level 2 buildings. What will feed that?
-1 = 2 plastic, 4 coils, 2 green circuits per 8 seconds (or 2 iron, 5 copper per 8 seconds)
-10 = 3 plastic, 8 coils (6.25 copper plate tot), 2.5 iron plate (tot), 3 green circuits per second (1.5 machines on green)
-
-green circuit = 2 iron plates and 6 coils per 1 second, to make 2
-2 green circuit builders will feed 10 red circuit makers
-
-===
-For filter inserters, need 7 green circuits and 5 iron plate. Only need one per 12 seconds per machine, so one line will feed our 6 machines easily. 
-If they are being consumed at 0.5/second, that's 0.25 of one machine's capacity, and will need 2 green, and 2 iron per second
-which is 4 iron plate and 12 coils per second for the precursor green circuits.
-
-1 green circ - 1 iron and 1.5 copper per 0.5 s
-			or 2 iron and 3 copper per s per machine
-			or 6 iron and 9 copper per s per 3 machines
-
-Blue sci needs 15.5 copper and 14 iron per 12 seconds
-6 Blue sci needs 8 cu, 7 Fe per second
-
-======
-8/8 needs 16 miners (x90Kw each) and 28 electric furnaces (x180KW each) = 6.5MW
-Solar panel = 60KW so requ 108 panels, + 108 for charging = 216 panels, and ~180 accumulators
-Steam engine = 510KW, so 13 engines, and 18 boilers.
-
-For 10MW, use 20 engines, and 28 boilers (ie two setups)
-Why not just go straight to 20MW? Four boiler setups. with two coal belts.
-
-6 blue sci, 10 red circ, fewer green circ - maybe only 2, if they are well fed, 
-1 line of inserters can feed up to 24 blue sci machines, so 1 line will do fine.
-
-feeding 40 electric furnaces requ 23 ore/sec, or 46 electric miners
-Let's say 50/40, so thats 12MW plus steel
-25 each on iron and copper (5x5)
-20 each on iron and copper (10x2) 
-
-===========
-1 rocket part
-= 10xLDS = 100 steel (from 500 iron plate) + 50 copper + 50 plastic
-= 10xControl system = 400 iron + 720 copper + 5 sulphur + 140 plastic
-= 10xFuel = 100 solid fuel
-
-= 900 iron + 770 copper + 5 sulphur + 190 plastic (from 95 coal and 285 petrol)
-100 rocket parts = 90,000 iron, 77,000 copper, (80 miners, 100 furnaces, couple of hours) 500 sulphur 19,000 plastic (3 factories, 2 hours)
 
 ============
 One rocket per hour:
@@ -277,7 +57,7 @@ Without speed that's 3 crude/second, or maybe up to 10/s with speed and beacons
 Soo, 10 crude/s using ALL of the petrol and light for petrol = 8.5 petrol/s
 
 This will make (almost) 6 plastic/second
-Which will support 24 advanced circuit mills...
+Which will support 24 Red Circuit mills...
 
 So 10 crude/s should support 20 red circuits factories
 
@@ -808,8 +588,8 @@ Green unload one entire side. The others get 1 or two stack inserters each.
 
 Four-belt balancer
 |splitter		 | splitter		|
-|belt	|ug		 | ug	 | belt	|
-|beltu	|blef	 | bright | belt|
+|belt	| ug	 |  ug	 | belt	|
+|belt	|blef	 | bright | belt|
 nothing | splitter | nothing
 belt | bright	| bleft	| belt
 |belt	|ug		 | ug	 | belt	|
@@ -821,272 +601,478 @@ splitter | splitter
 
 ===
 
-bootstrap factory
-miners, smelters, turrets, stack inserters (requested for)
-Explosives (coal reqd)
-Ammo for rocket launcher and flame thrower
-Destroyer capsules
-Belts and anciliaries of all kinds.
-Many cogs. Just old blue factories, ticking away at these.
-Bots
-Concrete and hazard concrete
-Lights
-Walls and gates
+bootstrap factory might need a tap off the main green bus. Save space.
+miners(pinched from blue science), smelters(pinched from purple science), turrets(got its own battery supply) DONE
+inserters (requested for) DONE
+Explosives (coal reqd) DONE
+Ammo for rocket launcher DONE
+Destroyer capsules DONE
+Belts and anciliaries of all kinds. DONE
+Many cogs. Just old blue factories, ticking away at these. DONE
+Bots DONE
+Concrete and hazard concrete DONE
+Lights DONE
+Walls DONE
+Shotgun ammo DONE
+Atomic missiles DONE
+Blueprint for watch towers. Ploppable from the train.
 
-Hazard concrete. Walls. Blueprint for watch towers. Gates
 
 ====
-
-Shift science, deconstruct old science base
-Set up smelting, right proper to support finishing science
-Able to handle 2 belts of blue ore, and 2 belts of Cu ore (but expandable to 8 belts of each, and maybe some space for rail lines).
-Once atomics are researched, go out and lay on ore.
-Train it to the smelter area. Train signals.
-Blueprint for train stations.
 
 ====
 
 Smelter array
-Markings for 16 lanes of ore up the middle; 8 Cu, 8 Fe, balanced with splitters. Six arrays of 40 with 20s melters on each side. Two further arrays of Steel. Maybe just belt it in, rather than getting fancy with direct supply. If steel backs up, Fe can just carry on its merry way. Make a blueprint of one 40-smelter setup and tile it. Same one can be used for steel. Basic inserters and red belts. Nothing fancy. Well defended. 
+Markings for 16 lanes of ore up the middle; 8 Cu, 8 Fe, balanced with splitters. Six arrays of 40 with 20s melters on each side. Two further arrays of Steel. Maybe just belt it in, rather than getting fancy with direct supply. If steel backs up, Fe can just carry on its merry way. 
 
-A blue belt will transport 2.4K/minute. A single train carriage will do the same. 4x40Fe + 6x40Cu = ~230 plates/second = 13K plates/minute.
+A blue belt will transport 2.4K/minute. 
+A single cargo wagon has 40 slots:
+
+2000 ore, or 4000 plates or 8K circuits.
 
 Can probably only support 100 plates/second all in, to begin with. Leave room to grow. Just split the Fe into thirds, and send a third to steel. Shift its array if it gets in the way. 80 steel smelters ~=10 steel/s, which is needed for my 0.5 science/second factory.. 
-Collect ore from drop-off marshalling stations. Or just have multiple trains. Dump and run. Pick up and run. Maybe have a dropoff station for each resource, so backing up one won't back up the others. Cu, Fe, Steel, Plastic. Coal and bricks can just be belted in.
+Collect ore from drop-off marshalling stations. Or just have multiple trains. Dump and run. Pick up and run. Maybe have a dropoff station for each resource, so backing up one won't back up the others. Cu, Fe, Steel, and Plastic. Coal and bricks can just be belted in. Develop Eastern Iron, and train ore in to the smelter array. Let trains each train empty before it returns for more ore. More atomics. Set up lines for belts. Maybe head off on a RSO-style ore-density mission. Straight south in the tank, blasting a path. Take some landfill along just in case.
+
+Two trains. Bring in HSO4, Lb, to replenish tanks
+
+Four carriages:
+plastic/red circuits
+Steel
+Fe
+Fe
+
+Lay on more green from the western base. Stop making red circuits over there. DONE
+Train them over to the main bus. DONE
+Rip up the blue belts, and re-use for developing new ore patches.
+Rationalise smelting to north of base. Train in ore from satellites. DONE
+
+Fuel train (5 locos) with rocket fuel and load with with:
+10Track; 10Landfill; 3Destroyers; 5Atomics; 1Shotgun shells; 1Fe, 1Cu, 1Steel, 3Circuits, 5Pylons, drone shells. Drop off radars and turrets on the way.
+
+Bring back wood and stone for off-load.
+Make a few figure-8s for trains to turn around, etc.
+
+Get that big uranium patch online, stat. Using u-238 pretty quickly, now. Will need quite a bit more to clear a perimeter. Also for depleted U bullets for turrets.
+Requires acid (crude or sulphur; water, Fe) and power. Maybe just tank in the acid.
+If I double-rail the line, it can likely move a five-wagon train every five seconds = five * 8K plates = 480K plates/minute. Need 84K/minute for 3 science/second.
+50K plates/min will fill 20 express belts... Need to move away from belts. Have factories feed/from chests and cargo wagons directly.
+Valuable outpost, so solid defence. Looked after by a bot outpost.
+Needs more acid. Better sort that. A 5:1 train should do.
+Build a train refuelling depot. Have em refuel on the way south.
+
+Keep going south. Maybe another week. Maybe boost atomics for the push. Destroyers are keeping up fine.
+Modules - speed and productivity. Keep em coming. Dedicate entire northern factory to module production. DONE
+3/minute = 100 Fe miners/smelters; 200 Cu miners/smelters
+		20 coal miners; 20 plastic/s (8 factories); 190 petrol/s; 
+		10 Red/s (46 factories - yowza.), 55Green/s (21 factories)
+		3 ProdIII; 6 ProdII; 12 ProdI onside = room for 21 factories.
+		
+2/minute = 66 Fe miners/smelters; 140 Cu miners/smelters
+		14 coal miners; 14 plastic/s (6 factories); 130 petrol/s; 
+		7 Red/s (30 factories), 37Green/s (14 factories)
+		2 ProdIII; 4 ProdII; 9 ProdI onside = room for 15 factories.
+		
+Remove box limit for smelters DONE (need 1000+)
+Remove box limit for express u/g 
+Remove box limit for miners DONE (need 1000+)
+Box full of Level III assemblers (at least 1000)
+Remove limits for three kinds of track.
+Raise limits for inserters., 1000 of each
+Small power poles. 1000
+Lights 1000
+
+Cargo wagon of iron plate can feed six factories making cogs, then feed one factory making express u'ground belts.
+
+Blue underneath > SmelterSmelter<Blue underneathBlueunderneath
+Can snake it, into three lengths of 24, for 72 smelters.
+Then it's 144x9, instead of 432x3
+Five snakes is 14 in each snake = 84 x 15
+Seven snakes (nice balance) is 10 in each = 60 x 21
+Nine snakes is 8 long, so 48 x 24
+11 snakes is 
+15 snakes is 5 long, so 30 x 45
+Right. Let's go with three snakes of 26. First snake, swap at half way, take off at the end. Second snake, likewise with splitter half way, and all goes onto one side at the end. Third snake all one side, and re-combine with the first snake at the end. Each snake is:
+
+B>XXXXXX<B = 10x13 long = 130 long and 9 wide.
+
+B>XXXOOO<BB>XXXXXX<BB>XXXOOO<BB>XXXXXX<B
+L XXXOOO PL XXXXXX PL XXXOOO PL XXXXXX P
+B<XXXOOO>BB<XXXXXX>BB<XXXOOO>BB<XXXXXX>B
+B>OOOXXX<BB>XXXXXX<BB>OOOXXX<BB>XXXXXX<B
+  OOOXXX    XXXXXX    OOOXXX    XXXXXX  
+B<OOOXXX>BB<XXXXXX>BB<OOOXXX>BB<XXXXXX>B
+B>XXXOOO<BB>XXXXXX<BB>XXXOOO<BB>XXXXXX<B
+L XXXOOO PL XXXXXX PL XXXOOO PL XXXXXX P
+B<XXXOOO>BB<XXXXXX>BB<XXXOOO>BB<XXXXXX>B
+
+Could potentially run in two express belts to half way, then run two belts out. Just to fill in that gap. It would then run to five switchbacks of 30 smelters. (150x15) 10 such would be 150x150 (1500 smelters, 850 plate/s (51K/min), a four-wagon train in under 10s)
+A quarter of this is 75x75, 375 smelters, 15 in each run. Much better. One roboport in the middle with all the loot (380 smelters, 380 fast, 380 basic, 760 UG, poles, lights). 
+
+15 snakes is 9x15=135wide. 15x26=1170
+Less beacons(?) and roboports. Ports construct 100x100 and interact 50x50
+For a 130x135 square, need 25 roboports for full coverage. Or five roboports in the middle, in an X-shape, 50-in from each corner, and one in the centre with the:
+1070 smelters
+1070 fast inserters
+1070 basic inserters
+2140 underground express belts. In stacks of 50, this is 43 stacks. Better get some more factories on this. Requires only Fe plate and lb. Rail in the lb and make onsite?
+535 lights
+535 small power poles
+Other four roboports
+Construction bots
+
+Start with four lines; 2 for Fe, 2 for Cu.
+Maybe make up a fluids train: acid/lb. Can turn around after dropping lb.
+300 smelters; 600 ugbelts (12 stacks); 300 fast; 300 basic; 150 lights, poles
+2 lanes will handle four wagons of ore in 94s, and fill a plates train in 3 mins 08.
+Plenty for now. Requires 160 of each miner. Ore trains can use the main trunk, if they're careful. Maybe don't need so many locos. 2:4? Local refuelling spot. One train for each ore patch. Count miners on big Cu patch. It could be 100. Start a blueprint, and it will count all the stuff in frame. Feed ore haulers coal. 
+
+Get southern uranium enrichment running.
+
+
+
+Clear encroaching alien bases. ONGOING
+
+Blueprint for entire bootstrap factory, reproduce down south.
+Include LevelIII assemblers.
+
+Go until the first 100m ore patch, or until I have 2K ProdIII modules (120/hour ~= 15 hours..), then find the promised land. A nice big desert, with at least 500m of Fe/Cu within reach. Get some productivity/speed modules into play for green circuits.
+
+North base can keep ticking over making nukes, power, modules.
+Rebuild bootstrap base to the south, and set up science aiming for 2/s.
+Plan B: Send plates, circuits, plastic, batteries, coal, bricks south. Trouble is, I am enjoying heading south.
+
+Make batteries at oil site? Send science packs north.
+LDS (Steel, plastic, copper)
+RCU (circuits)
+Fuel (oil)
+
+IIIIII-IIIIII-IIIIII-IIIIII-Engine-Engine-Engine-Engine-Engine
+Space for three trains, each ~70 tiles long. Re-fuelling for locos.
+200 across the top. Two signals and one stop. Unload/refuel to the right.
+
+Maybe have a stack of three Fe and three Cu unloaders, all named the same. Only ever use three of each train. That's quite a lot of thru-put. 6K/min = 100/s, or 2.5express.
+
+Switch directions of the main trunk, and all the stations (so that signals can go on the 'right'.
+Separate the main trunk into blocks. Each 60-tile waiting block needs to be solidly defended (on account of waiting trains full of valuable loot). Have the signal blocks at each end of the 60-tile segment, so the same gear can defend a train going in each direction. Maybe a blueprint. Turrets, signals, walls, radar, bot hub, repair packs, bots, replacement gear, power poles, gates. A siding to replace used-up bits. Resupply train timing based on inactivity. Split the long run into 10? sections. Find out how to find coordinates...
+Stage base:
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+W*														   *W
+W								     					    W
+W	LLL	LLL	LLL	LLL		XXX		  RRR     LLL LLL LLL LLL   W
+W	LLL	LLL	LLL	LLL		XXX	  PP  RRR     LLL LLL LLL LLL   W
+W S	LLL.LLL.LLL.LLL.   .XXX.C PP .RRR.   .LLL.LLL.LLL.LLL   W
+G===========================================================G
+G===========================================================G
+W*														  S*W
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+Measure first, with a real train, I guess. Maybe allow for a couple of extra carriages.
+~140 walls
+4 gates
+8 laser turrets
+1 roboport
+11 small power poles
+Build on existing pylon (not in plan (neither are rails))
+1 radar
+2 signals
+4 lights
+1 rail stop (for unloading supplies)?
+Concrete? Would need ~400 per. 
+Hazcrete alongside and under the rails. ~250 per.
+1 supply chest containing, walls, turrets, radar, gates, rails, bots, poles, repair packs
+Supply chest could be blocked off for only those items, and in line with carriage number 1
+Some drones. Damaged trains flying through may peel off some to their doom..
+
+10 such will require 
+1400 walls
+40 gates
+80 turrets
+10 roboports
+110 poles
+10 radars
+20 signals
+40 lights
+4K concrete
+2.5K haz concrete
+10 supply chests
+
+Ensure there's always a standing bay for each train in use. 
+
+Keep northern green circuits on life support. Can re-supply from southern ore, until southern circuits is fully online. Northern ore patches are holding out fairly well.
+One full express belt per cargo wagon will fill it:
+with ore in 50s
+with plate in 100s
+with circuits in 3.5mins
+
+One refinery takes 20 crude/s; output 2heavy, 9light, 11petrol
+heavy -> Lb/Light. Light -> rocket fuel. Petrol -> plastic + sulphur (10:1).
+One pumpjack can produce 100/s max
+So.. five refineries to one pumpjack? Need to dig into that.
+May have to train water to the refining station, or oil to a lake. 50:100 - you're better to train water to oil, than oil to water. One 75K wagon of water will run a refinery for 
+2 hours*4. Four wagons will feed 10 refineries for 50 mins. One train and a circuit network. Or, like, a pump. 2EZ.
+
+
+Shift drop point for green circuits, and sort out underneathies to the main bus.
+
+Get production of refineries automated (spur from purple science). DONE
+Check/supersize u/ground belt production DONE romping along
+Swap sides for trunk rail. Remove unwanted spurs, and place basic placeholder for full break point. Line up on pylon. DONE.
+Get uranium mining going again (needs acid load/unload spurs, and kickstarter U235)
+Rail signals DONE
+main trunk sections (F5 + map view?). 10 chunks. DONE
+Time to head south. First:
+	Sort loader for acid
+	Sort layby for resupply train
+	Sort autoloader for resupply train with assemblers, inserters, miners, smelters,
+		ugrounds, refineries, belts, poles, lasers, walls, gates, lights, bots, botports,
+		nukes, ammo, destroyers, track, landfill
+	For this trip, prioritise U235, refineries, pipes, upipes, chem factories, tanks
+	General refuelling, double-wide, with space for six trains (incl the two refuelling)
+Uranium site. Sort it out. Maybe make ammo onsite. Acid in, U235 out. Make nukes at main base. Does anything consume U238 other than ammo? Yes. Fuel = 19:1.
+40:5 -> 41:2. Maybe have the 2 go onto the inner ring, fresh U238 on the outer ring only. The inner ring swaps to the outer. New U238 applied via inserter, only when there's space.
+Oil site. Refineries, tanks, chem factories, pipes
+	In: water, crude, Fe, Cu. Plate buffers supplied by plate trains - inactivity
+	Out: batteries, acid/acid/Lb, plastic, rocket fuel (just enough for trains, at first)
+	One dedicated train, 5:4:1. Stops at Main Bus (acid, plastic, rocket fuel, Lb), 
+	refuel, Uranium (acid), (eventually also S Circuits (acid))
+Ore process site. Ore hauliers: 1:4. Should be fairly well protected.
+	Set up two 75-long, 5-fold snakes. Would be nice to just use the one, but how to manage blockages? Have the plate buffer call for ore when it gets low. Let full ore trains wait in a siding until called. Maybe they wait at home. Stop calling for trains when buffer is above a  certain point. To begin with, just one of each train. Needs to wait until *plates* are getting low. Get signal from plate buffer to *appropriate* ore haulier by activating the unload station. That could work, but what stops all the other trains piling in? Three snakes coming out, and are filtered to each Plate bay. One buffer for  each type (Fe, Cu, St). Means I only need one generic ore unload bay, and  no ore buffer. The incoming load should replenish the plate, not exceed the available buffer. Can the station be renamed on the fly, by the requesting plate buffer? Can the resulting buffer call a particular train, based on the resource type? "It's steel - call the steel train". No, a shared plates buffer would have to empty between uses, and I don't want that. Need three pickup stations, each with space for three trains. Plate trains sit until empty, before reloading. Maybe have ore trains wait by the plate pickup, until it 'turns on' the ore station by getting too low. Can it turn on/request a particular ore type? Get three loads in quick succession to replenish the buffer. Having three empty unloader stations seems a bit wasteful. Generic ore hauliers? Just wait in a siding, and the next cab off the rank goes off and collects the ore? Or just one generic ore hauler? Something is low, go get the thing.
+
+Two buffers, getting tapped by individual plate trains. 
+One triggers its low-value. The ore hauler goes to the appropriate ore reserve, fills up, dumps in the dropoff, and returns to its staging station. Can it cope if all three are low? How does it determine which one to pick up? List of stations: fill up at the low one, probably wait at the other one(s) (low, but train is already full) and return to dropoff. Want to be able to fill the whole train with an ore. Maybe it just goes to all the active stations, in order. It's a bit crap to have to wait, but oh well. Exclusive-OR between the stations? Even if they are both low, both ore stations can't be active at once. Fill one above it's $max capacity before attending to the other? Maybe only the lowest is active (compare them). Just fill the lowest, until both are above their $max. I quite like that. 
+
+if $amount < 16K && $amount < $other_amount then activate ore station
+If it delivers a full load, maybe don't need a $max value. 
+What if the $amounts are the same (eg 'zero')? Maybe have a single plate circulating on a conveyer, just to break the ice.
+
+OK, can't do Steel. That's a shame. Maybe just tap 1/3 of the Fe plate coming out for Steel. Maybe base it on the amount of steel in the system. Tap it off the Fe buffer, as required, to meed minimum demand. Turn on at $low-value, turn off at $high-value. If I run it through the main snake, I'll be left with a bunch of half-loaded smelters, waiting for more Fe. Test the change between Cu and Fe, and (?) stone. One train can likely fill/empty in 40s, run for 20s, so do a loop every minute = 8K ore/min = 133/s, requiring 233 smelters. 
+
+Test loop:
+One train+wagon. Station/resource buffer A; Station/resource B; drop-off/waiting station, sorter in the middle. Train goes to station of highest (above a $minimum) resource, picks it up and drops it at the dropoff. Then waits for a station to raise above its $min.
+
+For now, leave the existing Cu/Fe smelter systems ticking over. 
+	Buffer runs low of a resource. 
+	Request sent to:
+		ore train by:
+			activating the ore train's loader station. Empty ore hauliers form up behind their load station, at a staging station. Wait condition is existence of the unloader station. No need for staging station, in that case.
+			activating a specific ore unloader station
+			activating a generic ore unloader station
+		an inserter
+		a station
+		
+	Ideally, want three full ore trains waiting in a siding, ready for the call.
+	Any low buffer ought to be able to call at any time, and it be fine. Plate buffer can handle three loads of ore. (24K, or six steel chests. Maybe go to 12 chests - for a bit of spare space, that never gets used) Call when supply drops to less than one train load (4K*4=16K) 
+	Inserters pull the ore out. Plate loading bay has room for all trains of each type, or somehow calls them from their sidings, one at a time. 3 Fe, 3 Cu, 1 St. Steel train picks up its 'ore' from the Fe Plate buffer. Having only one smelter array will be tricky. Having only one dropoff point will be very tricky. Kludge would be to have three stops, one after the other, and inserters all the way along.
+Refuelling site for them (coal)
+Sort out main bus feed. underneathies. A pair. Will support 1Sci/second. Belts to begin with is fine, tho. 
+Maybe replace plastic/redCircuit; rocket fuel/steel supplies with belts... Nope. Fixed.
+Blue underneathies would be fine. 10 per 100 tiles. Maybe 2 stacks would do it. Yeah. Rip out that damn train, it's in the way. Right angles, pls. Start from the bus. At least sort out the carriages. 2:3; iron/copper fuel/steel red/plastic. Park/drain the tankers. lol nope. Fixed.
+
+Keep researching laser turret damage.
 
 ===
 
 
-
-
-
-
-
-
-
 Factory
-Components and ingredients
+
+Bricks (purple only, made locally), 10/s 
+Coal (grey only, mined locally), 5/s
+
+Batteries 1/s (Gold plus accumulator for satellite) 
+Rocket fuel (to silo)
+
+Speed1 1.5/s  
+Blue 2.6/s 
+
+Plastic; 5/s 
+Red (up to blue, one carriage - 10/s if circs premade)
+
+Steel (up to blue) 19/s
+
+Green (up to green) 60/s
+Green
+Green
+Green
+
+Cu Three 4/4 trains (45/s)
+Cu
+Cu
+Cu
+
+Fe Three 4/4 trains (65/s)
+Fe
+Fe
+Fe
+
+
+Red circuits
+
+
+
+
+http://doomeer.com/factorio/index.html#s1111bbbbbbbbbbbbbbrrrrrrrgrrgrgrgrrrgrgrrrrgrgrgrrrr1r1r1r1r1r1r1rrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+
+==Resources/buildings required for 1Science/second==
 
 Shared Resources
 
-Bricks (purple only)
-Coal (grey only)
-Plastic (LDS only)
-Plastic
+Iron Plate × 262.01/s(Electric Furnace × 458.518) (25% on bus, if circs/steel premade)
+	Iron Ore × 262.01/s(Electric Mining Drill × 499.067)
 
-Steel (up to blue)
-Steel
-Red (up to blue)
-Red
+Copper Plate × 205.625/s(Electric Furnace × 359.844) (22% on bus, if circs premade)
+	Copper Ore × 205.625/s(Electric Mining Drill × 391.667)
 
-Green (up to green)
-Green
-Green
-Green
+Steel Plate × 18.5/s(Electric Furnace × 161.875) (half a blue belt - all on the bus)
+	Iron Plate × 92.5/s  (35%)
 
-Cu
-Cu
-Cu
-Cu
+Plastic Bar × 37.9/s(Chemical Plant × 15.16) (5/s on bus, if circs premade)
+	Coal × 18.95/s(Electric Mining Drill × 36.096)
+	Petroleum Gas × 379/s  (59%)
 
-Fe
-Fe
-Fe
-Fe
+Green Circuit × 100.15/s(Assembling Machine 3 × 40.06) (60% on bus, if circs premade)
+	Iron Plate × 100.15/s  (38%)
+	Copper Cable × 300.451/s(Assembling Machine 3 × 60.091)
+		Copper Plate × 150.226/s  (73%)
 
-Iron Plate × 131.005/s(Electric Furnace × 229.259)
-	Iron Ore × 131.005/s(Electric Mining Drill × 249.534)
+Battery × 1/s(Chemical Plant × 4)
+	Iron Plate × 1/s  (0%)
+	Copper Plate × 1/s  (0%)
+	Sulfuric Acid × 20/s  (60%)
 
-Water × 447.945/s(Offshore Pump × 0.374)
+Red Circuit × 16.2/s(Assembling Machine 3 × 77.76) (10/s hits main bus, if circs premade)
+	Green Circuit × 32.4/s  (32%)
+	Plastic Bar × 32.4/s  (85%)
+	Copper Cable × 64.8/s(Assembling Machine 3 × 12.96)
+		Copper Plate × 32.4/s  (15%)
 
-Electronic Circuit × 50.075/s(Assembling Machine 3 × 20.03)
-	Iron Plate × 50.075/s
-	Copper Cable × 150.226/s(Assembling Machine 3 × 30.046)
-		Copper Plate × 75.113/s
-			
-Copper Plate × 102.813/s(Electric Furnace × 179.922)
-	Copper Ore × 102.813/s(Electric Mining Drill × 195.834)
+Sulfuric Acid × 33/s(Chemical Plant × 0.528)
+	Iron Plate × 0.66/s  (0%)
+	Sulfur × 3.301/s(Chemical Plant × 1.32)
+	Water × 49.501/s(Offshore Pump × 0.042)
+		Petroleum Gas × 49.501/s  (7%)
+		Water × 66/s(Offshore Pump × 0.055)
 
-Coal × 11.975/s(Electric Mining Drill × 22.81)
+Speed Module × 1.5/s(Assembling Machine 3 × 18)
+	Red Circuit × 7.5/s  (46%)
+	Green Circuit × 7.5/s  (7%)
 
-Advanced Circuit × 8.1/s(Assembling Machine 3 × 38.88)
-	Electronic Circuit × 16.2/s
-	Plastic Bar × 16.2/s(Chemical Plant × 6.48)
-		Coal × 8.1/s
-		Petroleum Gas × 162/s
-		Copper Cable × 32.4/s(Assembling Machine 3 × 6.48)
-			Copper Plate × 16.2/s
+Blue Circuit × 2.6/s(Assembling Machine 3 × 20.8)
+	Green Circuit × 52/s  (51%)
+	Red Circuit × 5.2/s  (32%)
+	Sulfuric Acid × 13/s  (39%)
 
-(( 	If blue circuits are treated as a shared resource, and belted to Gold, Satellite, RCU
-	Can remove blue from further down, if belted in)
-Processing Unit × 1.3/s(Assembling Machine 3 × 10.4)
-	Electronic Circuit × 26/s
-	Advanced Circuit × 2.6/s
-))
+Crude Oil × 1185.91/s(Pumpjack × 118.591)
 
-Steel Plate × 9.25/s(Electric Furnace × 80.938)
-	Iron Plate × 46.25/s
-
-Petroleum Gas × 319.25/s(Advanced Oil Processing+Heavy Oil Cracking+Light Oil Cracking × 17.737)
-	Crude Oil × 354.723/s(Pumpjack × 35.473)
-	Water × 390.195/s
+Petroleum Gas × 638.5/s(Advanced Oil Processing × 58.046)
+	Crude Oil × 1160.91/s  (97%)
+	Water × 580.455/s(Offshore Pump × 0.484)
 
 Non-Shared Resources
 
-Science Pack 1 × 0.5/s(Assembling Machine 3 × 2)
-	Copper Plate × 0.5/s
-	Iron Gear Wheel × 0.5/s(Assembling Machine 3 × 0.2)
-		Iron Plate × 1/s
+Science Pack 1 × 1/s(Assembling Machine 3 × 4)
+	Copper Plate × 1/s  (0%)
+	Iron Gear Wheel × 1/s(Assembling Machine 3 × 0.4)
+		Iron Plate × 2/s  (0%)
 
-Science Pack 2 × 0.5/s(Assembling Machine 3 × 2.4)
-	Inserter × 0.5/s(Assembling Machine 3 × 0.2)
-		Iron Plate × 0.5/s
+Science Pack 2 × 1/s(Assembling Machine 3 × 4.8)
+	Inserter × 1/s(Assembling Machine 3 × 0.4)
+		Iron Plate × 1/s  (0%)
+		Iron Gear Wheel × 1/s(Assembling Machine 3 × 0.4)
+			Iron Plate × 2/s  (0%)
+		Green Circuit × 1/s  (0%)
+	Transport Belt × 1/s(Assembling Machine 3 × 0.2)
+		Iron Plate × 0.5/s  (0%)
 		Iron Gear Wheel × 0.5/s(Assembling Machine 3 × 0.2)
-			Iron Plate × 1/s
-		Electronic Circuit × 0.5/s
-	Transport Belt × 0.5/s(Assembling Machine 3 × 0.1)
-		Iron Plate × 0.25/s
-		Iron Gear Wheel × 0.25/s(Assembling Machine 3 × 0.1)
-			Iron Plate × 0.5/s
+			Iron Plate × 1/s  (0%)
 
-Science Pack 3 × 0.5/s(Assembling Machine 3 × 4.8)
-	Advanced Circuit × 0.5/s
-	Engine Unit × 0.5/s(Assembling Machine 3 × 4)
-		Steel Plate × 0.5/s
+Science Pack 3 × 1/s(Assembling Machine 3 × 9.6)
+	Red Circuit × 1/s  (6%)
+	Engine Unit × 1/s(Assembling Machine 3 × 8)
+		Steel Plate × 1/s  (5%)
+		Iron Gear Wheel × 1/s(Assembling Machine 3 × 0.4)
+			Iron Plate × 2/s  (0%)
+		Pipe × 2/s(Assembling Machine 3 × 0.8)
+			Iron Plate × 2/s  (0%)
+	Electric Mining Drill × 1/s(Assembling Machine 3 × 1.6)
+		Iron Plate × 10/s  (3%)
+		Iron Gear Wheel × 5/s(Assembling Machine 3 × 2)
+			Iron Plate × 10/s  (3%)
+	Green Circuit × 3/s  (2%)
+
+Military science pack × 1/s(Assembling Machine 3 × 4)
+	Piercing Rounds Magazine × 0.5/s(Assembling Machine 3 × 1.2)
+		Firearm Magazine × 0.5/s(Assembling Machine 3 × 0.4)
+			Iron Plate × 2/s  (0%)
+		Steel Plate × 0.5/s  (2%)
+		Copper Plate × 2.5/s  (1%)
+	Grenade × 0.5/s(Assembling Machine 3 × 3.2)
+		Coal × 5/s(Electric Mining Drill × 9.524)
+		Iron Plate × 2.5/s  (0%)
+	Gun Turret × 0.5/s(Assembling Machine 3 × 3.2)
+		Iron Plate × 10/s  (3%)
+		Copper Plate × 5/s  (2%)
+		Iron Gear Wheel × 5/s(Assembling Machine 3 × 2)
+			Iron Plate × 10/s  (3%)
+
+Production science pack × 1/s(Assembling Machine 3 × 5.6)
+	Electric Engine Unit × 0.5/s(Assembling Machine 3 × 4)
+		Engine Unit × 0.5/s(Assembling Machine 3 × 4)
+		Steel Plate × 0.5/s  (2%)
 		Iron Gear Wheel × 0.5/s(Assembling Machine 3 × 0.2)
-			Iron Plate × 1/s
+			Iron Plate × 1/s  (0%)
 		Pipe × 1/s(Assembling Machine 3 × 0.4)
-			Iron Plate × 1/s
-	Electric Mining Drill × 0.5/s(Assembling Machine 3 × 0.8)
-		Iron Plate × 5/s
+			Iron Plate × 1/s  (0%)
+		Green Circuit × 1/s  (0%)
+		Lubricant × 7.5/s(Chemical Plant × 0.6)
+			Heavy Oil × 7.5/s(Basic Oil Processing × 12.5)
+				Crude Oil × 25/s  (2%)
+	Assembling Machine 1 × 0.5/s(Assembling Machine 3 × 0.2)
+		Green Circuit × 1.5/s  (1%)
 		Iron Gear Wheel × 2.5/s(Assembling Machine 3 × 1)
-			Iron Plate × 5/s
-	Electronic Circuit × 1.5/s
+			Iron Plate × 5/s  (1%)
+		Iron Plate × 4.5/s  (1%)
+	Electric Furnace × 0.5/s(Assembling Machine 3 × 2)
+		Steel Plate × 5/s  (27%)
+		Stone Brick × 5/s(Electric Furnace × 8.75)
+			Stone × 10/s(Electric Mining Drill × 15.385)
+		Red Circuit × 2.5/s  (15%)
 
-Military science pack × 0.5/s(Assembling Machine 3 × 2)
-	Piercing Rounds Magazine × 0.25/s(Assembling Machine 3 × 0.6)
-		Regular Magazine × 0.25/s(Assembling Machine 3 × 0.4)
-			Iron Plate × 1/s
-		Steel Plate × 0.25/s
-		Copper Plate × 1.25/s
-	Basic Grenade × 0.25/s(Assembling Machine 3 × 1.6)
-		Coal × 2.5/s
-		Iron Plate × 1.25/s
-	Gun Turret × 0.25/s(Assembling Machine 3 × 1.6)
-		Iron Plate × 5/s
-		Copper Plate × 2.5/s
-		Iron Gear Wheel × 2.5/s(Assembling Machine 3 × 1)
-			Iron Plate × 5/s
+High tech science pack × 1/s(Assembling Machine 3 × 5.6)
+	Battery × 0.5/s  (50%)
+	Blue Circuit × 1.5/s  (57%)
+	Speed Module × 0.5/s  (33%)
+	Copper Cable × 15/s(Assembling Machine 3 × 3)
+		Copper Plate × 7.5/s  (3%)
 
-Production science pack × 0.5/s(Assembling Machine 3 × 2.8)
-	Electric Engine Unit × 0.25/s(Assembling Machine 3 × 2)
-		Engine Unit × 0.25/s(Assembling Machine 3 × 2)
-		Steel Plate × 0.25/s
-		Iron Gear Wheel × 0.25/s(Assembling Machine 3 × 0.1)
-			Iron Plate × 0.5/s
-			Pipe × 0.5/s(Assembling Machine 3 × 0.2)
-				Iron Plate × 0.5/s
-	Electronic Circuit × 0.5/s
-	Lubricant × 3.75/s(Chemical Plant × 0.3)
-		Heavy Oil × 3.75/s(Basic Oil Processing × 6.25)
-			Crude Oil × 12.5/s(Pumpjack × 1.25)
-	Assembling Machine 1 × 0.25/s(Assembling Machine 3 × 0.1)
-		Electronic Circuit × 0.75/s
-		Iron Gear Wheel × 1.25/s(Assembling Machine 3 × 0.5)
-			Iron Plate × 2.5/s
-		Iron Plate × 2.25/s
-	Electric Furnace × 0.25/s(Assembling Machine 3 × 1)
-		Steel Plate × 2.5/s
-		Stone Brick × 2.5/s(Electric Furnace × 4.375)
-			Stone × 5/s(Electric Mining Drill × 7.693)
-	Advanced Circuit × 1.25/s
-
-High tech science pack × 0.5/s(Assembling Machine 3 × 2.8)
-	For green circuits: (split 50:50; split 25:25; split .125:.125 -> Speed1; Merge .5:.125; re-split; 30:30 + .25 -> split among 6 Blue circuits);
-	Battery × 0.25/s(Chemical Plant × 1)
-		Iron Plate × 0.25/s
-		Copper Plate × 0.25/s
-		Sulfuric Acid × 5/s(Chemical Plant × 0.08)
-			Iron Plate × 0.1/s
-			Sulfur × 0.5/s(Chemical Plant × 0.2)
-			Water × 7.5/s
-			Petroleum Gas × 7.5/s
-				Water × 10/s
-	Processing Unit × 0.75/s(Assembling Machine 3 × 6)
-		Electronic Circuit × 15/s  
-		Advanced Circuit × 1.5/s
-		Sulfuric Acid × 3.75/s(Chemical Plant × 0.06)
-			Iron Plate × 0.075/s
-			Sulfur × 0.375/s(Chemical Plant × 0.15)
-			Water × 5.625/s
-				Petroleum Gas × 5.625/s
-				Water × 7.5/s
-	Speed Module × 0.25/s(Assembling Machine 3 × 3)
-		Advanced Circuit × 1.25/s
-		Electronic Circuit × 1.25/s
-		Copper Cable × 7.5/s(Assembling Machine 3 × 1.5)
-			Copper Plate × 3.75/s
-
-Rocket Part × 0.05/s(Rocket Silo × 0.151)
-	Low Density Structure × 0.5/s(Assembling Machine 3 × 12)
-		Steel Plate × 5/s
-		Copper Plate × 2.5/s
-		Plastic Bar × 2.5/s(Chemical Plant × 1)
-			Coal × 1.25/s
-			Petroleum Gas × 25/s
-	Rocket Fuel × 0.5/s(Assembling Machine 3 × 12)
-		Solid Fuel × 5/s(Chemical Plant × 12)
-			Petroleum Gas × 100/s
-	Rocket Control Unit × 0.5/s(Assembling Machine 3 × 12)
-		Processing Unit × 0.5/s(Assembling Machine 3 × 4)
-		Electronic Circuit × 10/s
-		Advanced Circuit × 1/s
-			Sulfuric Acid × 2.5/s(Chemical Plant × 0.04)
-				Iron Plate × 0.05/s
-				Sulfur × 0.25/s(Chemical Plant × 0.1)
-				Water × 3.75/s
-					Petroleum Gas × 3.75/s
-					Water × 5/s
-	Speed Module × 0.5/s(Assembling Machine 3 × 6)
-	Advanced Circuit × 2.5/s
-	Electronic Circuit × 2.5/s
-
-Satellite × 0.001/s(Assembling Machine 3 × 0.002)
-	Low Density Structure × 0.05/s(Assembling Machine 3 × 1.2)
-		Steel Plate × 0.5/s
-		Copper Plate × 0.25/s
-		Plastic Bar × 0.25/s(Chemical Plant × 0.1)
-			Coal × 0.125/s
-			Petroleum Gas × 2.5/s
-	Solar Panel × 0.05/s(Assembling Machine 3 × 0.4)
-		Steel Plate × 0.25/s
-		Electronic Circuit × 0.75/s
-		Copper Plate × 0.25/s
-	Basic Accumulator × 0.05/s(Assembling Machine 3 × 0.4)
-		Iron Plate × 0.1/s
-		Battery × 0.25/s(Chemical Plant × 1)
-			Iron Plate × 0.25/s
-			Copper Plate × 0.25/s
-			Sulfuric Acid × 5/s(Chemical Plant × 0.08)
-				Iron Plate × 0.1/s
-				Sulfur × 0.5/s(Chemical Plant × 0.2)
-				Water × 7.5/s
-					Petroleum Gas × 7.5/s
-					Water × 10/s
-	Radar × 0.025/s(Assembling Machine 3 × 0.01)
-	Electronic Circuit × 0.125/s
-	Iron Plate × 0.25/s
-	Iron Gear Wheel × 0.125/s(Assembling Machine 3 × 0.05)
-		Iron Plate × 0.25/s
-	Processing Unit × 0.05/s(Assembling Machine 3 × 0.4)
-		Electronic Circuit × 1/s
-		Advanced Circuit × 0.1/s
-		Sulfuric Acid × 0.25/s(Chemical Plant × 0.004)
-			Iron Plate × 0.005/s
-			Sulfur × 0.025/s(Chemical Plant × 0.01)
-			Water × 0.375/s
-				Petroleum Gas × 0.375/s
-				Water × 0.5/s
-	Rocket Fuel × 0.025/s(Assembling Machine 3 × 0.6)
-		Solid Fuel × 0.25/s(Chemical Plant × 0.6)
-			Petroleum Gas × 5/s
+Space Science Pack × 1/s(Rocket Silo × 1)
+	Rocket Part × 0.1/s(Rocket Silo × 0.301)
+		Low Density Structure × 1/s(Assembling Machine 3 × 24)
+			Steel Plate × 10/s  (54%)
+			Copper Plate × 5/s  (2%)
+			Plastic Bar × 5/s  (13%) (half a yellow belt. Easy.)
+	Rocket Fuel × 1/s(Assembling Machine 3 × 24)
+		Solid Fuel × 10/s(Chemical Plant × 24)
+			Petroleum Gas × 200/s  (31%)
+	Rocket Control Unit × 1/s(Assembling Machine 3 × 24)
+		Blue Circuit × 1/s  (38%)
+		Speed Module × 1/s  (66%)
+	Satellite × 0.001/s(Assembling Machine 3 × 0.003)
+		Low Density Structure × 0.1/s(Assembling Machine 3 × 2.4)
+			Steel Plate × 1/s  (5%)
+			Copper Plate × 0.5/s  (0%)
+			Plastic Bar × 0.5/s  (1%)
+		Solar Panel × 0.1/s(Assembling Machine 3 × 0.8)
+			Steel Plate × 0.5/s  (2%)
+			Green Circuit × 1.5/s  (1%)
+			Copper Plate × 0.5/s  (0%)
+		Accumulator × 0.1/s(Assembling Machine 3 × 0.8)
+			Iron Plate × 0.2/s  (0%)
+			Battery × 0.5/s  (50%)
+		Radar × 0.05/s(Assembling Machine 3 × 0.02)
+			Green Circuit × 0.25/s  (0%)
+			Iron Plate × 0.5/s  (0%)
+			Iron Gear Wheel × 0.25/s(Assembling Machine 3 × 0.1)
+				Iron Plate × 0.5/s  (0%)
+		Blue Circuit × 0.1/s  (3%)
+		Rocket Fuel × 0.05/s(Assembling Machine 3 × 1.2)
+			Solid Fuel × 0.5/s(Chemical Plant × 1.2)
+				Petroleum Gas × 10/s  (1%)
