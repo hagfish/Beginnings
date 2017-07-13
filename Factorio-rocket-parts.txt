@@ -584,6 +584,9 @@ Fe, Cu, Coal/Brick/Green/red/steel (also plastic, for rocket parts)
 Plates, unload both sides, stack inserters
 Green unload one entire side. The others get 1 or two stack inserters each.
 
+Red
+Cu, Fe
+
 
 
 Four-belt balancer
@@ -816,6 +819,7 @@ Shift drop point for green circuits, and sort out underneathies to the main bus.
 Get production of refineries automated (spur from purple science). DONE
 Check/supersize u/ground belt production DONE romping along
 Swap sides for trunk rail. Remove unwanted spurs, and place basic placeholder for full break point. Line up on pylon. DONE.
+
 Get uranium mining going again (needs acid load/unload spurs, and kickstarter U235)
 Rail signals DONE
 main trunk sections (F5 + map view?). 10 chunks. DONE
@@ -829,25 +833,94 @@ Time to head south. First:
 	General refuelling, double-wide, with space for six trains (incl the two refuelling)
 Uranium site. Sort it out. Maybe make ammo onsite. Acid in, U235 out. Make nukes at main base. Does anything consume U238 other than ammo? Yes. Fuel = 19:1.
 40:5 -> 41:2. Maybe have the 2 go onto the inner ring, fresh U238 on the outer ring only. The inner ring swaps to the outer. New U238 applied via inserter, only when there's space.
+
+Maybe play with ore haulier test, at this point. 
+
 Oil site. Refineries, tanks, chem factories, pipes
 	In: water, crude, Fe, Cu. Plate buffers supplied by plate trains - inactivity
 	Out: batteries, acid/acid/Lb, plastic, rocket fuel (just enough for trains, at first)
 	One dedicated train, 5:4:1. Stops at Main Bus (acid, plastic, rocket fuel, Lb), 
 	refuel, Uranium (acid), (eventually also S Circuits (acid))
 Ore process site. Ore hauliers: 1:4. Should be fairly well protected.
-	Set up two 75-long, 5-fold snakes. Would be nice to just use the one, but how to manage blockages? Have the plate buffer call for ore when it gets low. Let full ore trains wait in a siding until called. Maybe they wait at home. Stop calling for trains when buffer is above a  certain point. To begin with, just one of each train. Needs to wait until *plates* are getting low. Get signal from plate buffer to *appropriate* ore haulier by activating the unload station. That could work, but what stops all the other trains piling in? Three snakes coming out, and are filtered to each Plate bay. One buffer for  each type (Fe, Cu, St). Means I only need one generic ore unload bay, and  no ore buffer. The incoming load should replenish the plate, not exceed the available buffer. Can the station be renamed on the fly, by the requesting plate buffer? Can the resulting buffer call a particular train, based on the resource type? "It's steel - call the steel train". No, a shared plates buffer would have to empty between uses, and I don't want that. Need three pickup stations, each with space for three trains. Plate trains sit until empty, before reloading. Maybe have ore trains wait by the plate pickup, until it 'turns on' the ore station by getting too low. Can it turn on/request a particular ore type? Get three loads in quick succession to replenish the buffer. Having three empty unloader stations seems a bit wasteful. Generic ore hauliers? Just wait in a siding, and the next cab off the rank goes off and collects the ore? Or just one generic ore hauler? Something is low, go get the thing.
+	Set up two 75-long, 5-fold snakes. Would be nice to just use the one, but how to manage blockages? Have the plate buffer call for ore when it gets low. Let full ore trains wait in a siding until called. Maybe they wait at home. Stop calling for trains when buffer is above a  certain point. To begin with, just one of each train. Needs to wait until *plates* are getting low. Get signal from plate buffer to *appropriate* ore haulier by activating the unload station. That could work, but what stops all the other trains piling in? Three snakes coming out, and are filtered to each Plate bay. One buffer for  each type (Fe, Cu, St). Means I only need one generic ore unload bay, and  no ore buffer. The incoming load should replenish the plate, not exceed the available buffer. Can the station be renamed on the fly, by the requesting plate buffer? Can the resulting buffer call a particular train, based on the resource type? "It's steel - call the steel train". No, a shared plates buffer would have to empty between uses, and I don't want that. Need three pickup stations, each with space for three trains. Plate trains sit until empty, before reloading. Maybe have ore trains wait by the plate pickup, until it 'turns on' the ore station by getting too low. Can it turn on/request a particular ore type? Get three loads in quick succession to replenish the buffer. Having three empty unloader stations seems a bit wasteful. Generic ore hauliers? Just wait in a siding, and the next cab off the rank goes off and collects the ore? Or just one generic ore hauler? Something is low, go get the thing, from the place with the most of it on hand
+	
+M'kay. Here's how it ought to work:
+	I have several outposts mining Cu ore, and several mining Fe ore. Among each ore type, they confer, and activate the stop of the one with the most ore of each type.
+	Either PLATE buffer runs low, and requests more plate.
+	For a stop to be fully active, it must have the largest buffer of its type AND
+		get the nod from the plate buffers. Once the hauler leaves, the station 
+		needs to stay active/selected until the ore hauler leaves with its load of ore.
 
+Here's now it could work:
+	Dropoff buffers - one for Cu, one for Fe. Always topped off by trains on circuits. 
+	Come back each time, wait till empty, go to the next one.
+	Buffers output to the belts when their plates get low. 
+	Cu and Fe can go at the same time.
+	They stop unloading when their plate buffer is > $max. 
+	The plate buffer can handle quite a bit of overage. Time an ore takes to travel 
+	5*75 tiles at 5.625m/s, plus 1.75s for smelting = 68.5s of delay.
+	Four blue belts can smelt 10K ore in that time. Three chests. 
+	Meh, fine. Lay on a buffer of 8 chests. Four blue lines -> 8 red lines 160/s.
+	
+Umm, actually need 1000 furnaces, so maybe having a single big run ain't such a hot idea.
+I still like the idea of serial processing, tho.
+1000 furnaces require ~600 ore/s = 15 blue belts = 15 snekes = 1125 smelters.
+
+16 snekes could be fed from four ore dropoffs. The low one is the active one. Parked trains are useless trains, tho. Maybe if a train has more to go and its time is up, it goes to the lowest one. Need some kind of load balancing down the track, I suppose. Sorting it upstream sounds like a better idea, tho.
+
+16 snakes of 75 smelters = 1200 smelters, in four groups of four snakes.
+Input/output at one end means output can govern input (68s delay, notwithstanding)
+Maybe directly control belts (no) or inserters, based on plates levels. If it goes over $max, the inserters stop unloading ore, and the ore trains wait. What if all the ore trains are on copper, but we need iron?
+The train station needs to send it away, sooner or later, if the unloaders are shared.
+If unloaders are split, then no probs. Train unloads, waiting train waits in a stacker. Separate ore loading, too. Waiting trains in a stacker. The only circuit required is the empty plate chests unloading more ore. The inserters can all go at once. All they care about is 'are my plates low?'. Unload stations need to deactivate if they are full. Let ore haulers get out of the way of plate haulers. Plate haulers, likewise, need to get out of the way of ore haulers. Maybe they  actually need to be able to work at the same time.. A blockage with one will block the other. Ok, a pair of trains. 
+Belt inserter chest inserter track space space track inserter chest inserter belt 
+Can two snakes be fed 'back to back'?
+One snake will handle 40/s, so will deplete a chest of ore in 50s.
+Need four modules of four snakes. One can be steel.
+Four loader/unloader stations, each with four loader/unloader chests. 
+If they are six tiles apart, the whole array will be 18 + (3*4) * 16 = 210 wide x 93 deep. Maybe have it on its side. I have plenty of N/S space. Loader/unloaders will likely take another 100 tiles. A plates train is ~60 long.
+If I have four pickup/drop-off areas, there will be problems with who has the most. 
+If I have one, it will need to handle 500 ore/s in, and 500 plate/s out.
+Using 16 chests. That will use and ore-train in 16s, and fill a plates train in 32s.
+Stack inserters can each shift 12/s, so 12 can shift unload a cargo wagon in 14s. Can I research another stack size increase? Would need ore hauliers all lined up, ready to unload - one every 16s. More likely is we keep the split between Fe and Cu.. And that's just for 60spm.
+
+The loader/unloader is 18 wide if serviced by loader/unloader trains, each with double-sided chests. The snake can be 18 wide if it's bent into six sections. Then it's only 60 long (12 smelters. 72 smelters in all. Able to handle 41.1 plates/s. About right. 
+Splitting into 3 with full throughput = 1:2, 2:4 with one feeding back in.
+
+Each blue belt needs a train every ~3.5 mins. One unloader needs a train every 20s.
+
+I think go with one train per sneke. Yes, it's 16 trains, but there's some headroom.\
+
+Can each loader/unloader serve two snekes? Four sections each.
+Four sections per = 18 ea. = 72 per.  = 90 deep, by 24 per wide = 96 for four.
+One ore train can supply two express belts (one each side) for 100s. For loading the belt, only blue inserters are needed, to keep pace. Will want even filling of plates among all four cargo wagons. 1:2:4 on each side. 48 blue inserters can likely keep pace to transfer from/to chests/belts. Maybe even basics. Stack inserters for wagon/chest, tho.
+Double chests for ore, single chests for plates because they stack to 100. 
+One ore train every 90s, one plates train every 3 mins. Per pair of stacks.
+A module is two of these, and I need four modules = one plates train every 22s. Woo.
+8000x3=24K/min = still not enuf.
+
+300spm (5sps) requires 2300 plates/s; 5000 smelters. 70x70 smelters. Pretty easy, really. No snekes, just rack it through. Two lanes per train. Exit from far end. Easeh.
+35 trains in (one every 100s), 35 trains out (one every 200s).
+or if it's 72 across; 18 trains in, 18 out. One cargo wagon per row. Should probably be aiming for this. 
+
+Ore haulers with six cargo wagons could each serve six straight 70s, emptying in 50s.
+
+Nothing fancy with mixing ores, just pound it through: Fe trains, Cu trains. One ore hauler is not going to work. 300spm will need a six carriage plate hauler heading north every 10 seconds. Among 18 haulers, this should be okay. 80% only goes as far as circuits/steel, anyway. Will likely need 100 ore patches on the go to feed this. Get ore off belts and into chests asap. Maybe go 2:6 for ore haulers. Keep traffic a little lower.
+
+Each train needs to service ~300 miners = 150/s = a full load among all three in 53s.
+If I'm using 3:8 trains, that's a couple of minutes to fill. Just need a 6-min buffer at each ore patch (at least five chests - will be 96, so meh).
+			
 Two buffers, getting tapped by individual plate trains. 
 One triggers its low-value. The ore hauler goes to the appropriate ore reserve, fills up, dumps in the dropoff, and returns to its staging station. Can it cope if all three are low? How does it determine which one to pick up? List of stations: fill up at the low one, probably wait at the other one(s) (low, but train is already full) and return to dropoff. Want to be able to fill the whole train with an ore. Maybe it just goes to all the active stations, in order. It's a bit crap to have to wait, but oh well. Exclusive-OR between the stations? Even if they are both low, both ore stations can't be active at once. Fill one above it's $max capacity before attending to the other? Maybe only the lowest is active (compare them). Just fill the lowest, until both are above their $max. I quite like that. 
 
 if $amount < 16K && $amount < $other_amount then activate ore station
 If it delivers a full load, maybe don't need a $max value. 
-What if the $amounts are the same (eg 'zero')? Maybe have a single plate circulating on a conveyer, just to break the ice.
+What if the $amounts are the same (eg 'zero')? Maybe have a single plate circulating on a conveyer, just to break ties.
 
 OK, can't do Steel. That's a shame. Maybe just tap 1/3 of the Fe plate coming out for Steel. Maybe base it on the amount of steel in the system. Tap it off the Fe buffer, as required, to meed minimum demand. Turn on at $low-value, turn off at $high-value. If I run it through the main snake, I'll be left with a bunch of half-loaded smelters, waiting for more Fe. Test the change between Cu and Fe, and (?) stone. One train can likely fill/empty in 40s, run for 20s, so do a loop every minute = 8K ore/min = 133/s, requiring 233 smelters. 
 
 Test loop:
-One train+wagon. Station/resource buffer A; Station/resource B; drop-off/waiting station, sorter in the middle. Train goes to station of highest (above a $minimum) resource, picks it up and drops it at the dropoff. Then waits for a station to raise above its $min.
+One train+wagon. Station/resource buffer A; Station/resource buffer B; drop-off/waiting station, sorter in the middle. Train goes to station of highest (above a $minimum) resource, picks it up and drops it at the dropoff. Then waits for a station to raise above its $min.
 
 For now, leave the existing Cu/Fe smelter systems ticking over. 
 	Buffer runs low of a resource. 
@@ -867,7 +940,93 @@ Sort out main bus feed. underneathies. A pair. Will support 1Sci/second. Belts t
 Maybe replace plastic/redCircuit; rocket fuel/steel supplies with belts... Nope. Fixed.
 Blue underneathies would be fine. 10 per 100 tiles. Maybe 2 stacks would do it. Yeah. Rip out that damn train, it's in the way. Right angles, pls. Start from the bus. At least sort out the carriages. 2:3; iron/copper fuel/steel red/plastic. Park/drain the tankers. lol nope. Fixed.
 
+Set up a lay by at each end for the supplies train. Unloads into supply chests.
+
 Keep researching laser turret damage.
+
+TRAIN BUS for 300spm
+
+From top to bottom.
+
+Green, needs 500/s from 200 factories (from 500Fe/s, 751 Cu/s)
+	Green will drain a 5:4 Cu train in 20s. Will need to be modular, built
+	around the capacity of one train. Maybe 2Fe wagons : 3Cu wagons.
+	Will need to be a large installation, likely using tiled snekes.
+	Coil factories along the sides, blue underneathies feeding Fe to Green factories
+	up the middle.
+	One blue can feed 16 Green LevelIIIs. Need 24 Coils factories per 16.
+	A 6:4 matrix works. 
+	
+	13 of these 16/24 modules required.
+	76 deep x (13x11=) 143 wide 
+	11 wide is enough for belt inserter box inserter track x2
+	Will require significant thruput of Cu/Fe. Can't feed it yet. Laying on
+	this amount of ore will require many nukes, so check on Uranium next time
+	I'm passing, and maybe get it delivered to the north base on the acid run.
+	Once the other centrifuges are up to speed. Maybe build another dozen
+	centrifuges, and sort out the network.
+
+Steel, needs 800 smelters (460Fe/s) = 12 snekes
+
+Gears, needs 180Fe/s (one 5:4 every 88s)
+
+Coal 120/s from 230 miners
+
+Plastic (upstream of red) 190/s from 76 factories (80% of the coal)
+
+Red, needs 81/s (300 factories) (from 162 plastic, 162 Green, 162 Cu)/s
+
+==thruput pressure eases here==
+
+Blue circs 13/s from 104 factories (50% of green + 33% of red)
+
+Speed1 7.5/s from 90 factories (46% of red + 7% of green)
+
+Lb 3 chem factories
+
+Batteries 20 factories, acid
+
+Bricks 25/s from 45 smelters (50 stone/s from 77 miners) Trickle in at the end.
+
+
+
+
+
+
+Red science (x20)
+Cu, gear wheels(5%) (stack to 100)
+Far end. One train every once in a while.
+
+Green science (x25)
+Fe, Gear wheels, Green circuits
+Next one back. One occasional train.
+
+Blue science (x50)
+Red circ (5%), green circ, gear wheels (33%), iron, steel (5%)
+Lots of gears, light on everything else.
+
+Grey science (x20)
+Fe, Cu (20%), Steel, Coal, Gears (29%)
+Tailored train, once in a while. 
+For 300gspm, 72Fe, 2.5St, 38Cu, 25Gear, 25Coal. Coal stack size is 50, so takes 2x as much room, so we'll say 50Coal. (187.5 tot)
+38%Fe, 20%Cu, 13%Gear, 26%Coal, 1%Steel
+With four wagons = 
+6KFe, 3.2KCu, 2KGear, .2KCoal, 200Steel
+One train every 80s.
+
+Purple science (x30)
+Steel (27%), Gears (14%), Fe, Lb (100%), Green circ, Bricks (100%), Red circ (15%)
+
+Gold science
+Batteries (50%), Cu, Blue circ (57%), Speed1 (33%)
+One carriage of Blue circs will last 17 mins.
+
+Space science
+LDS120 factories: Cu (25%), Steel (54%), Plastic (13%)
+RCU 120 factories: Blue circ (38%), Speed1 (66%)
+Fuel: Fuel 120 factories, from 120 factories making solid fuel. 1000/s of petrol
+Satellite: LDS, Steel, Green circ, Cu, Fe, batteries (50%), Gears, Blue circ (3%), Fuel
+	
 
 ===
 
@@ -905,6 +1064,7 @@ Fe
 
 
 Red circuits
+
 
 
 
@@ -996,7 +1156,7 @@ Science Pack 3 × 1/s(Assembling Machine 3 × 9.6)
 		Iron Plate × 10/s  (3%)
 		Iron Gear Wheel × 5/s(Assembling Machine 3 × 2)
 			Iron Plate × 10/s  (3%)
-	Green Circuit × 3/s  (2%)
+		Green Circuit × 3/s  (2%)
 
 Military science pack × 1/s(Assembling Machine 3 × 4)
 	Piercing Rounds Magazine × 0.5/s(Assembling Machine 3 × 1.2)
@@ -1045,7 +1205,7 @@ High tech science pack × 1/s(Assembling Machine 3 × 5.6)
 
 Space Science Pack × 1/s(Rocket Silo × 1)
 	Rocket Part × 0.1/s(Rocket Silo × 0.301)
-		Low Density Structure × 1/s(Assembling Machine 3 × 24)
+	Low Density Structure × 1/s(Assembling Machine 3 × 24)
 			Steel Plate × 10/s  (54%)
 			Copper Plate × 5/s  (2%)
 			Plastic Bar × 5/s  (13%) (half a yellow belt. Easy.)
